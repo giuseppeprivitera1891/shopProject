@@ -39,7 +39,7 @@ Checkout product
 Purchase a product
     [Arguments]    ${countryName}
     input text    ${inputCountry}   ${countryName}
-    sleep    5 seconds
+    sleep    6
     click element    ${suggestCountry}
     wait until element is visible    ${acceptPurchaseTerms}
     click element    ${acceptPurchaseTerms}

@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary      screenshot_root_directory=${imagePath}
-Library    ScreenCapLibrary     screenshot_directory=${videoPath}
+Library    ScreenCapLibrary     screenshot_directory=${videoPath}    screenshot_module=PyGTK
 Library    ExcelLibrary
 Library    BuiltIn
 
@@ -8,7 +8,6 @@ Library    BuiltIn
 Open the browser
     open browser    ${url}       ${browser}
     maximize browser window
-    set selenium speed    0.3 seconds
 
 Open file
     [Arguments]  ${fileName}    ${sheetName}
@@ -35,5 +34,5 @@ Close the browser
 ${imagePath}    ../../PycharmProjects/shopProject/output/image
 ${videoPath}    ../../PycharmProjects/shopProject/output/video
 ${url}   https://rahulshettyacademy.com/loginpagePractise/
-${video}    ${TRUE}
-${browser}    chrome
+${video}    ${FALSE}
+${browser}    firefox

@@ -16,17 +16,17 @@ Enter correct credentials
     click button    ${signInButton}
 
 Get wrong message
-    wait until element is visible    ${wrongcredentials}
-    element should contain    ${wrongCredentials}   ${errormessage}     ignore_case=True
+    wait until element is visible    ${wrongCredentials}
+    element should contain    ${wrongCredentials}   ${errorMessage}     ignore_case=True
 
 Choice type of account
     click element   ${userRadioButton}
     wait until element is visible    ${okayButtonModal}
     element should contain    ${messageModalLogin}      ${expectedTextModal}       ignore_case=True
     click button    ${okayButtonModal}
+    wait until element is not visible    ${okayButtonModal}
 
 Accept the terms
-    wait until element is visible    ${acceptTerms}
     click element   ${acceptTerms}
 
 
