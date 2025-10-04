@@ -15,7 +15,7 @@ Search product
 
 Add a product
     [Arguments]    ${chooseProduct}
-    sleep    5 seconds
+    #sleep    5
     wait until element is visible       ${listProducts}
     search product  ${chooseProduct}
     click element    ${checkoutProductButton}
