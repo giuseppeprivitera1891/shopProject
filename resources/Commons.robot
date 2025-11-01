@@ -1,13 +1,13 @@
 *** Settings ***
 Library    SeleniumLibrary      screenshot_root_directory=${imagePath}
-Library    ScreenCapLibrary     screenshot_directory=${videoPath}    screenshot_module=PyGTK
+Library    ScreenCapLibrary     screenshot_directory=${videoPath}
 Library    ExcelLibrary
 Library    BuiltIn
 
 *** Keywords ***
 Open the browser
-    open browser    ${url}       ${browser}
-    maximize browser window
+    Open Browser    ${url}       ${browser}
+    Maximize Browser Window
 
 Open file
     [Arguments]  ${fileName}    ${sheetName}
@@ -19,20 +19,20 @@ Close file
 Start video
     [Arguments]    ${name}
     IF    '${video}' == '${TRUE}'
-                start video recording   name=${name}   monitor=1      embed=True
+                Start Video Recording   name=${name}   monitor=1      embed=True
     END
 
 Stop video
     IF    '${video}' == '${TRUE}'
-                stop all video recordings    save_to_disk=True
+                Stop All Video Recordings    save_to_disk=True
     END
 
 Close the browser
-    close browser
+    Close Browser
 
 *** Variables ***
 ${imagePath}    ../../PycharmProjects/shopProject/output/image
 ${videoPath}    ../../PycharmProjects/shopProject/output/video
 ${url}   https://rahulshettyacademy.com/loginpagePractise/
-${video}    ${FALSE}
+${video}    ${TRUE}
 ${browser}    firefox
