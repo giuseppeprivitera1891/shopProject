@@ -15,8 +15,8 @@ Test Case - Invalid login
 *** Keywords ***
 Invalid login
     [Arguments]    ${username}  ${password}
-    input text   ${usernameInput}    ${username}
-    input password   ${passwordInput}   ${password}
-    click button    ${signInButton}
-    get wrong message
+    Input Text    ${usernameInput}    ${username}
+    Input Password    ${passwordInput}   ${password}
+    Click Button    ${signInButton}
+    Get Wrong Message
 
