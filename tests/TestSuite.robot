@@ -6,9 +6,9 @@ Suite Setup  Open the browser
 Suite Teardown    Close the browser
 
 *** Variables ***
-${fileUserPath}    ../../PycharmProjects/shopProject/data/user.xlsx
+${fileUserPath}    ../../PycharmProjects/shopProject/data/user.xls
 ${user}     user
-${fileCountryPath}      ../../PycharmProjects/shopProject/data/country.xlsx
+${fileCountryPath}      ../../PycharmProjects/shopProject/data/country.xls
 ${country}      country
 ${addProduct}   Samsung Note 8
 ${addNewProduct}    iphone X
