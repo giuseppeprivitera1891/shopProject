@@ -1,11 +1,11 @@
 *** Settings ***
 Resource    ../pages/Login.robot
-Library    DataDriver    ../../PycharmProjects/shopProject/data/invalid.xlsx
-Suite Setup  Open the browser
-#Test Setup    Open the browser
-#Test Teardown    Close the browser
+Library    DataDriver    ../../PycharmProjects/shopProject/data/invalid.xls
+#Suite Setup  Open the browser
+Test Setup    Open the browser
+Test Teardown    Close the browser
 Test Template    Invalid login
-Suite Teardown    Close the browser
+#Suite Teardown    Close the browser
 
 *** Test Cases ***
 Test Case - Invalid login
