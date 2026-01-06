@@ -11,42 +11,42 @@ ${successTextMessage} =     success
 
 *** Keywords ***
 Checks the elements in the cart page before
-    element text should be    ${productStatus}      ${productTextStatus}    ignore_case=True
-    page should contain element    ${totalPrice}
-    element text should be      ${removeButton}     ${removeTextButton}     ignore_case=True
-    element text should be    ${backShopPage}   ${backShopPageTextButton}   ignore_case=True
+    Element Text Should Be    ${productStatus}      ${productTextStatus}    ignore_case=True
+    Page Should Contain Element    ${totalPrice}
+    Element Text Should Be    ${removeButton}     ${removeTextButton}     ignore_case=True
+    Element Text Should Be     ${backShopPage}   ${backShopPageTextButton}   ignore_case=True
 
 Checks the elements in the cart page after
-    page should not contain element    ${productStatus}
-    page should not contain button    ${removeButton}
+    Page Should Not Contain Element    ${productStatus}
+    Page Should Not Contain Button    ${removeButton}
 
 Back to shop page
-    element should be enabled    ${backShopPage}
-    click button    ${backShopPage}
+    Element Should Be Enabled    ${backShopPage}
+    Click Button    ${backShopPage}
 
 Remove a product
-    checks the elements in the cart page before
-    element should be enabled   ${removeButton}
-    click button    ${removeButton}
-    checks the elements in the cart page after
-    back to shop page
+    Checks The Elements In The Cart Page Before
+    Element Should Be Enabled    ${removeButton}
+    Click Button    ${removeButton}
+    Checks The Elements In The Cart Page After
+    Back To Shop Page
 
 Checkout product
-    Checks the elements in the cart page before
-    element should be enabled    ${checkoutButton}
-    click button    ${checkoutButton}
+    Checks The Elements In The Cart Page Before
+    Element Should Be Enabled    ${checkoutButton}
+    Click Button    ${checkoutButton}
 
 Purchase a product
     [Arguments]    ${countryName}
-    input text    ${inputCountry}   ${countryName}
-    sleep    6
-    click element    ${suggestCountry}
-    wait until element is visible    ${acceptPurchaseTerms}
-    click element    ${acceptPurchaseTerms}
-    element should be enabled   ${purchaseButton}
-    click button    ${purchaseButton}
-    wait until page contains element    ${successPurchaseMessage}
-    element should contain    ${successPurchaseMessage}     ${successTextMessage}   ignore_case=True
+    Input Text    ${inputCountry}   ${countryName}
+    Sleep    6
+    Click Element    ${suggestCountry}
+    Wait Until Element Is Visible    ${acceptPurchaseTerms}
+    Click Element    ${acceptPurchaseTerms}
+    Element Should Be Enabled    ${purchaseButton}
+    Click Button    ${purchaseButton}
+    Wait Until Page Contains Element    ${successPurchaseMessage}
+    Element Should Contain    ${successPurchaseMessage}     ${successTextMessage}   ignore_case=True
 
 
 
