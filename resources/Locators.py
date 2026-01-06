@@ -6,7 +6,7 @@ wrongCredentials = "xpath://strong[normalize-space()='Incorrect']"
 userRadioButton = "css:input[value='user']"
 messageModalLogin = "xpath://p[contains(text(),'You will be limited to only fewer functionalities ')]"
 okayButtonModal = "id:okayBtn"
-acceptTerms = "name:terms"
+acceptTerms = "id:terms"
 
 # Shop page
 listProducts = "css:.card-title"

@@ -1,6 +1,6 @@
 *** Settings ***
 Resource    ../pages/Login.robot
-Library    DataDriver    ../../PycharmProjects/shopProject/data/invalid.xlsx
+Library    DataDriver    ../../PyCharmMiscProject/shopProject/data/invalid.xlsx
 #Suite Setup  Open the browser
 Test Setup    Open the browser
 Test Teardown    Close the browser
