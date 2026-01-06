@@ -5,24 +5,24 @@ Resource    ../resources/Commons.robot
 *** Keywords ***
 Search product
     [Arguments]    ${chooseProduct}
-    ${elements} =   get webelements    ${listProducts}
-    ${index} =  set variable    1
+    ${elements} =   Get Webelements    ${listProducts}
+    ${index} =  Set Variable    1
     FOR  ${element}  IN  @{elements}
-        exit for loop if    '${chooseProduct}' == '${element.text}'
-        ${index} =  evaluate    ${index} + 1
+        Exit For Loop If    '${chooseProduct}' == '${element.text}'
+        ${index} =  Evaluate    ${index} + 1
     END
-    click button    xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[${index}]
+    Click Button    xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[${index}]
 
 Add a product
     [Arguments]    ${chooseProduct}
     #sleep    5
-    wait until element is visible       ${listProducts}
-    search product  ${chooseProduct}
-    click element    ${checkoutProductButton}
+    Wait Until Element Is Visible    ${listProducts}
+    Search Product    ${chooseProduct}
+    Click Element    ${checkoutProductButton}
 
 Check the text of checkout button
-    scroll element into view    ${checkoutProductButton}
-    element should contain    ${checkoutProductButton}     ${checkoutTextButton}
+    Scroll Element Into View    ${checkoutProductButton}
+    Element Should Contain    ${checkoutProductButton}     ${checkoutTextButton}
 
 *** Variables ***
 ${checkoutTextButton} =     c
