@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.3.2 (Python 3.13.9 on win32)" name="Generator">
+<meta content="Robot Framework 7.4.1 (Python 3.12.3 on linux)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -116,15 +116,16 @@ select {
 #header {
     width: 65em;
     height: 3em;
-    margin: 20px 0 6px 0;
+    margin: 1em 0 0 0;
 }
 h1 {
     float: left;
-    margin: 0 0 0.5em 0;
+    margin: 0 0 1em 0;
     width: 75%;
 }
 h2 {
     clear: left;
+    margin: 1.5em 0 0.5em 0;
 }
 #generated {
     float: right;
@@ -168,7 +169,13 @@ h2 {
     background-color: var(--primary-color);
     border-radius: 3px;
 }
-.label.debug, .label.trace, .label.error, .label.keyword {
+/* https://stackoverflow.com/questions/75238633 */
+@supports (-moz-appearance: none) {
+    .label {
+        padding-top: 4px;
+    }
+}
+.label.debug, .label.trace, .label.error {
     letter-spacing: 0;
 }
 .label.pass, .label.fail, .label.error, .label.skip, .label.warn {
@@ -355,19 +362,6 @@ th.stats-col-graph:hover {
 [data-theme="light"] .dark-mode-icon {
     display: block;
 }
-@keyframes highlight {
-    0% {
-        background: var(--primary-color)
-    }
-    100% {
-        background: var(--target-color);
-    }
-}
-:target {
-    background: var(--target-color);
-    transition: background 0.3s;
-    animation: highlight 4s;
-}
 </style>
 <style media="all">
 /* Icons are from Open Iconic <https://useiconic.com/open/>.
@@ -384,36 +378,43 @@ th.stats-col-graph:hover {
     --elapsed-color: #999;
 }
 /* Containers */
-.suite, .test, #errors {
+.suite, .test, #errors, #errors .messages {
     border-color: #ccc; /* Fallback value */
     border-color: var(--secondary-color);
     border-width: 1px;
     border-style: solid;
-    padding: 0.3em 0.2em;
-    margin: 0.2em 0;
+    padding: 5px;
+    margin-top: 5px;
 }
 .test {
     border-style: dashed;
 }
-#errors, .messages {
+.messages {
     width: 100%;
     border-spacing: 0;
+    padding: 0 5px;
 }
 .children {
     display: none;
-    margin-left: 1.4em;
+    margin-left: 18px;
+    margin-top: 2px;
 }
-.suite, .test, .keyword {
-    margin-left: -0.2em;
+#errors .children {
+    margin-left: 22px;
 }
-#s1, .suite > .children > .keyword {
-    margin-left: 0;
+.suite, .test {
+    margin-left: -5px;
+}
+#s1, #errors {
+    margin: 0;
 }
 /* Suite, test and kw headers */
 .element-header {
+    display: flex;
+    align-items: center;
+    padding: 2px;
     border: 1px solid transparent;
     border-radius: 2px;
-    position: relative;
 }
 .element-header:hover {
     cursor: pointer;
@@ -423,17 +424,15 @@ th.stats-col-graph:hover {
     border-color: var(--secondary-color);
 }
 .element-header-toggle {
-    position: absolute;
-    left: 3px;
-    top: 5px;
+    margin: 0 4px 0 2px;
+    height: 11px;
+    width: 11px;
+    min-width: 11px;
+    background-size: 6px 6px;
     background-repeat: no-repeat;
     background-position: center;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAQAAABKxSfDAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0JChSkZz20AAAAGklEQVQI12NgQAKMDKzInP8IDhOqMk4G7AAANQwBE427PYUAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0wIDB2Mmg4di0yaC04eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAzKSIgLz4KPC9zdmc+), none;
     filter: var(--icon-filter);
-    height: 10px;
-    width: 10px;
-    background-size: 6px 6px;
     border-color: #ccc; /* Fallback value */
     border-color: var(--icon-highlight);
     border-width: 1px;
@@ -441,67 +440,59 @@ th.stats-col-graph:hover {
     border-radius: 2px;
 }
 .closed > .element-header-toggle {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAGCAQAAABKxSfDAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0JCDHdVYtxAAAAM0lEQVQI103MMQqAMBQFwVHyITaB3P+W1sKzSBC3mW6hRFw0pUB5DvF1bu9FN0RM3X/wAk98CUnvFTakAAAAAElFTkSuQmCC);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0zIDB2M2gtM3YyaDN2M2gydi0zaDN2LTJoLTN2LTNoLTJ6IiAvPgo8L3N2Zz4=), none;
 }
 .element-header:hover > .element-header-toggle {
     background-color: #ccc; /* Fallback value */
     background-color: var(--icon-highlight);
 }
-.element-header-right:hover ~ .element-header-toggle {
+.element-header-menu:hover ~ .element-header-toggle {
     background-color: transparent;
 }
-.element-header-left {
-    padding: 3px 80px 3px 20px;
-}
-.element-header-right {
-    position: absolute;
-    right: 0;
-    top: 0;
-    padding: 3px;
+.element-header-menu {
+    margin: 0 2px 0 4px;
     cursor: default;
 }
-.element-header .label {
-    margin-right: 0.5em;
+.name, .arg, .assign {
+    margin-left: 7px;
+    white-space: pre-wrap;
 }
 .name {
     font-weight: bold;
-    white-space: pre-wrap;
-}
-.arg, .assign {
-    white-space: pre-wrap;
 }
 .elapsed {
-    float: right;
+    margin-left: auto;
+    padding-left: 0.5em;
     color: #666; /* Fallback value */
     color: var(--elapsed-color);
-    padding-left: 1em;
+    font-size: 0.9em;
+}
+/* https://stackoverflow.com/questions/75238633 */
+@supports (-moz-appearance: none) {
+    .name, .arg, .assign, .elapsed {
+        padding-top: 3px;
+    }
 }
 .link {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAHlJREFUGJVtzrEJwmAQBtCn6ASuIKTIBhY2gmghBiJYB1udwk10B8FJbKMBcQFbtbkfJHrVwfu+4/idJR64Y9H7E3higj5O3S8Y44ApLnjhnXCNGhV2yNGggDJwiC02gavUbpDFvscRo4QdXOMKDHBufz3HLYKzNn4AbSkV3fncGQYAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik01Ljg4LjAzYy0uMTguMDEtLjM2LjAzLS41My4wOS0uMjcuMS0uNTMuMjUtLjc1LjQ3YS41LjUgMCAxIDAgLjY5LjY5Yy4xMS0uMTEuMjQtLjE3LjM4LS4yMi4zNS0uMTIuNzgtLjA3IDEuMDYuMjIuMzkuMzkuMzkgMS4wNCAwIDEuNDRsLTEuNSAxLjVjLS40NC40NC0uOC40OC0xLjA2LjQ3LS4yNi0uMDEtLjQxLS4xMy0uNDEtLjEzYS41LjUgMCAxIDAtLjUuODhzLjM0LjIyLjg0LjI1Yy41LjAzIDEuMi0uMTYgMS44MS0uNzhsMS41LTEuNWMuNzgtLjc4Ljc4LTIuMDQgMC0yLjgxLS4yOC0uMjgtLjYxLS40NS0uOTctLjUzLS4xOC0uMDQtLjM4LS4wNC0uNTYtLjAzem0tMiAyLjMxYy0uNS0uMDItMS4xOS4xNS0xLjc4Ljc1bC0xLjUgMS41Yy0uNzguNzgtLjc4IDIuMDQgMCAyLjgxLjU2LjU2IDEuMzYuNzIgMi4wNi40Ny4yNy0uMS41My0uMjUuNzUtLjQ3YS41LjUgMCAxIDAtLjY5LS42OWMtLjExLjExLS4yNC4xNy0uMzguMjItLjM1LjEyLS43OC4wNy0xLjA2LS4yMi0uMzktLjM5LS4zOS0xLjA0IDAtMS40NGwxLjUtMS41Yy40LS40Ljc1LS40NSAxLjAzLS40NC4yOC4wMS40Ny4wOS40Ny4wOWEuNS41IDAgMSAwIC40NC0uODhzLS4zNC0uMi0uODQtLjIyeiIKICAvPgo8L3N2Zz4=), none;
-    filter: var(--icon-filter);
 }
 .expand {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAADtJREFUGJVjYCACKDAwMByA0ljFDjAwMPxnYGB4ABVQgLL/Q+VQBB6gseGmIivCkERXhFUSWRFOSawAAEl7E3uv1iMcAAAAAElFTkSuQmCC);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0xLjUgMGwtMS41IDEuNSA0IDQgNC00LTEuNS0xLjUtMi41IDIuNS0yLjUtMi41eiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAxKSIgLz4KPC9zdmc+), none;
-    filter: var(--icon-filter);
 }
 .collapse {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEwAACxMBAJqcGAAAAC5JREFUGJVjYCARNEAxTsn/UIyhCFkSQxG6ThQ+C5IpjWhG1yNb4YDFTdjEMAEACi8Q++9Y9TAAAAAASUVORK5CYII=);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik00IDBsLTQgNCAxLjUgMS41IDIuNS0yLjUgMi41IDIuNSAxLjUtMS41LTQtNHoiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAgMSkiIC8+Cjwvc3ZnPg==), none;
-    filter: var(--icon-filter);
 }
 .expand, .collapse, .link {
     float: left;
     display: block;
     visibility: hidden;
-    margin: 0 4px;
+    margin: 0 3px;
     height: 14px;
     width: 14px;
     background-size: 8px 8px;
     background-repeat: no-repeat;
     background-position: center;
+    filter: var(--icon-filter);
     border-color: #ccc; /* Fallback value */
     border-color: var(--icon-highlight);
     border-width: 1px;
@@ -519,23 +510,18 @@ th.stats-col-graph:hover {
     background-color: var(--icon-highlight);
 }
 /* Messages and errors */
+.message-row {
+    height: 20px;
+}
 .messages .time, .messages .message {
     font-family: monospace;
     font-size: 1.1em;
 }
-#errors .message {
-    font-family: monospace;
-    font-size: 1.2em;
-}
-.message-row {
-    height: 20px;
-}
-.time {
+.messages .time {
     width: 7.5em;
 }
-.error-time {
-    width: 11em;
-    font-size: 0.9em;
+#errors .time {
+    width: 12.5em;
     white-space: nowrap;
 }
 .level {
@@ -555,7 +541,6 @@ th.stats-col-graph:hover {
     background-position: center;
 }
 .message-row:hover .select-message div {
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAQAAAD8fJRsAAAAAmJLR0QA/4ePzL8AAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfeCR0MOzhWKZQOAAAASUlEQVQY032PsRHAIAwDX9BkicD+W8UMEqegAQJWKZ/+3sLZJhFGQEZzNaIa4ibh66En867VNaIeoP5WppNuIGoAlOm3g5VC1AdYeQv1BZPRSgAAAABJRU5ErkJggg==);
     background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiIHZpZXdCb3g9IjAgMCA4IDgiPgogIDxwYXRoIGQ9Ik0wIDB2MWg4di0xaC04em0wIDJ2MWg2di0xaC02em0wIDJ2MWg4di0xaC04em0wIDJ2MWg2di0xaC02eiIgLz4KPC9zdmc+), none;
     filter: var(--icon-filter);
     border-color: #ccc; /* Fallback value */
@@ -577,7 +562,6 @@ th.stats-col-graph:hover {
 .debug-message {
     display: table;
 }
-/* Metadata */
 .metadata {
     width: 100%;
     border-spacing: 0.2em;
@@ -596,6 +580,20 @@ th.stats-col-graph:hover {
 /* Custom styles for statistics */
 #total-stats tr:hover, #tag-stats tr:hover {
     cursor: default;
+}
+/* Target highlight */
+@keyframes highlight {
+    0% {
+        background: var(--primary-color)
+    }
+    100% {
+        background: var(--target-color);
+    }
+}
+:target {
+    background: var(--target-color);
+    transition: background 0.3s;
+    animation: highlight 4s;
 }
 </style>
 <style media="print">
@@ -741,7 +739,8 @@ function toggleElement(elementId, childrenNames) {
     children.toggle(100, '', function () {
         element.children('.element-header').toggleClass('closed');
     });
-    populateChildren(elementId, children, childrenNames);
+    if (childrenNames)
+        populateChildren(elementId, children, childrenNames);
 }
 function populateChildren(elementId, childElement, childrenNames) {
     if (!childElement.hasClass('populated')) {
@@ -1144,7 +1143,7 @@ window.model = (function () {
         kw.type = data.type;
         kw.template = 'keywordTemplate';
         kw.arguments = data.args;
-        kw.assign = data.assign + (data.assign ? ' =  ' : '');
+        kw.assign = data.assign;
         kw.tags = data.tags;
         kw.timeout = data.timeout;
         kw.populateKeywords = createIterablePopulator('Keyword');
@@ -1883,7 +1882,7 @@ function addStatistics() {
         '<th class="stats-col-elapsed">Elapsed</th>' +
         '<th class="stats-col-graph">Pass / Fail / Skip</th>';
     var statTable =
-        '<h2>{Test} Statistics</h2>' +
+        '<h2>Statistics</h2>' +
         '<table class="statistics" id="total-stats"><thead><tr>' +
         '<th class="stats-col-name">Total Statistics</th>' + statHeaders +
         '</tr></thead></table>' +
@@ -1893,7 +1892,7 @@ function addStatistics() {
         '<table class="statistics" id="suite-stats"><thead><tr>' +
         '<th class="stats-col-name">Statistics by Suite</th>' + statHeaders +
         '</tr></thead></table>';
-    $(testOrTask(statTable)).appendTo('#statistics-container');
+    $(statTable).appendTo('#statistics-container');
     util.map(['total', 'tag', 'suite'], addStatTable);
     addTooltipsToElapsedTimes();
     enableStatisticsSorter();
@@ -2074,25 +2073,25 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,36923],[],[[4,0,5,[6],[1,10380,3586],[[0,7,8,0,0,9,0,0,[1,10382,2408],[[5,10,0,0,0,0,0,0,[1,10383,2406],[[0,11,12,0,13,14,0,0,[1,10420,2369],[[12785,2,15]]]]]]],[0,16,8,0,0,17,0,0,[1,12792,21],[[0,18,19,0,20,21,0,0,[1,12793,19],[]]]],[0,22,19,0,23,24,25,0,[1,12814,1],[[12814,2,26]]],[0,22,19,0,23,27,28,0,[1,12815,1],[[12816,2,29]]],[0,30,31,0,0,32,0,0,[1,12817,1098],[[0,33,34,0,35,36,0,0,[1,12818,99],[[12819,2,37]]],[0,38,34,0,39,40,0,0,[1,12917,40],[[12918,2,41],[12930,2,42]]],[0,43,31,0,0,0,0,0,[1,12958,788],[[0,44,34,0,45,46,0,0,[1,12959,105],[[12959,2,47]]],[0,48,34,0,49,50,0,0,[1,13066,289],[]],[0,51,34,0,52,53,0,0,[1,13355,27],[[13382,2,54]]],[0,55,34,0,56,50,0,0,[1,13382,86],[[13382,2,57]]],[0,58,34,0,59,50,0,0,[1,13469,276],[]]]],[0,60,31,0,0,0,0,0,[1,13747,75],[[0,44,34,0,45,61,0,0,[1,13748,73],[[13749,2,62]]]]],[0,55,34,0,56,63,0,0,[1,13822,93],[[13822,2,64]]]]],[0,65,8,0,0,0,0,0,[1,13916,1],[[0,66,19,0,67,0,0,0,[1,13916,0],[]]]],[0,68,8,0,0,0,0,0,[1,13917,47],[[5,10,0,0,0,0,0,0,[1,13918,46],[[0,69,12,0,70,71,0,0,[1,13919,45],[[13963,2,72]]]]]]]]],[73,0,74,[75,76],[1,13967,4616],[[0,7,8,0,0,77,0,0,[1,13968,2156],[[5,10,0,0,0,0,0,0,[1,13969,2155],[[0,11,12,0,13,14,0,0,[1,13969,2155],[[16121,2,15]]]]]]],[0,78,79,0,0,80,0,0,[1,16125,2309],[[0,48,34,0,49,81,0,0,[1,16126,1828],[]],[0,82,79,0,0,83,0,0,[1,17955,340],[[0,84,34,0,85,81,86,0,[1,17957,11],[[17968,2,87]]],[0,88,89,0,90,91,92,0,[1,17968,0],[[17968,2,93]]],[3,94,0,0,0,0,0,0,[1,17968,79],[[4,95,0,0,0,0,0,0,[1,17969,30],[[0,96,89,0,97,98,0,0,[1,17969,29],[]],[0,99,89,0,100,101,92,0,[1,17999,0],[[17999,2,102]]]]],[4,103,0,0,0,0,0,0,[1,17999,48],[[0,96,89,0,97,98,0,0,[1,17999,48],[[18047,2,104]]],[0,99,89,0,100,101,92,0,[3,18048,0],[]]]]]],[0,55,34,0,56,105,0,0,[1,18048,247],[[18048,2,106]]]]],[0,44,34,0,45,107,0,0,[1,18296,138],[[18297,2,108]]]]],[0,68,8,0,0,0,0,0,[1,18435,148],[[5,10,0,0,0,0,0,0,[1,18435,147],[[0,69,12,0,70,71,0,0,[1,18436,146],[[18582,2,109]]]]]]]]],[110,0,111,[112],[1,18585,2865],[[0,7,8,0,0,113,0,0,[1,18586,2265],[[5,10,0,0,0,0,0,0,[1,18587,2264],[[0,11,12,0,13,14,0,0,[1,18588,2263],[[20848,2,114]]]]]]],[0,115,116,0,0,0,0,0,[1,20852,321],[[0,117,116,0,0,0,0,0,[1,20853,77],[[0,118,34,0,119,120,0,0,[1,20854,20],[[20854,2,121]]],[0,122,34,0,123,124,0,0,[1,20874,6],[[20879,2,125]]],[0,118,34,0,119,126,0,0,[1,20880,22],[[20881,2,127]]],[0,118,34,0,119,128,0,0,[1,20903,27],[[20904,2,129]]]]],[0,130,34,0,131,132,0,0,[1,20930,20],[]],[0,55,34,0,56,132,0,0,[1,20951,92],[[20952,2,133]]],[0,134,116,0,0,0,0,0,[1,21044,18],[[0,135,34,0,136,137,0,0,[1,21044,6],[[21050,2,138]]],[0,139,34,0,140,132,0,0,[1,21051,11],[[21056,2,141],[21061,2,142]]]]],[0,143,116,0,0,0,0,0,[1,21062,111],[[0,130,34,0,131,144,0,0,[1,21063,23],[]],[0,55,34,0,56,144,0,0,[1,21086,86],[[21087,2,145]]]]]]],[0,68,8,0,0,0,0,0,[1,21174,275],[[5,10,0,0,0,0,0,0,[1,21174,274],[[0,69,12,0,70,71,0,0,[1,21175,274],[[21448,2,146]]]]]]]]],[147,0,74,[148],[1,21452,2693],[[0,7,8,0,0,149,0,0,[1,21454,2191],[[5,10,0,0,0,0,0,0,[1,21455,2189],[[0,11,12,0,13,14,0,0,[1,21457,2188],[[23641,2,15]]]]]]],[0,78,79,0,0,150,0,0,[1,23647,223],[[0,48,34,0,49,81,0,0,[1,23649,26],[]],[0,82,79,0,0,83,0,0,[1,23675,111],[[0,84,34,0,85,81,86,0,[1,23676,5],[[23680,2,151]]],[0,88,89,0,90,91,92,0,[1,23681,1],[[23681,2,93]]],[3,94,0,0,0,0,0,0,[1,23682,16],[[4,152,0,0,0,0,0,0,[1,23682,16],[[0,96,89,0,97,98,0,0,[1,23682,15],[[23697,2,104]]],[0,99,89,0,100,101,92,0,[3,23698,0],[]]]]]],[0,55,34,0,56,105,0,0,[1,23698,88],[[23699,2,153]]]]],[0,44,34,0,45,107,0,0,[1,23787,83],[[23787,2,108]]]]],[0,68,8,0,0,0,0,0,[1,23871,274],[[5,10,0,0,0,0,0,0,[1,23872,273],[[0,69,12,0,70,71,0,0,[1,23873,272],[[24144,2,154]]]]]]]]],[155,0,156,[157],[1,24147,9079],[[0,7,8,0,0,158,0,0,[1,24148,2150],[[5,10,0,0,0,0,0,0,[1,24148,2150],[[0,11,12,0,13,14,0,0,[1,24149,2149],[[26295,2,159]]]]]]],[0,160,116,0,0,0,0,0,[1,26299,211],[[0,117,116,0,0,0,0,0,[1,26301,84],[[0,118,34,0,119,120,0,0,[1,26302,18],[[26303,2,121]]],[0,122,34,0,123,124,0,0,[1,26321,5],[[26325,2,125]]],[0,118,34,0,119,126,0,0,[1,26326,24],[[26327,2,127]]],[0,118,34,0,119,128,0,0,[1,26351,34],[[26352,2,129]]]]],[0,130,34,0,131,161,0,0,[1,26386,23],[]],[0,55,34,0,56,161,0,0,[1,26410,100],[[26411,2,162]]]]],[0,16,8,0,0,163,0,0,[1,26511,12],[[0,18,19,0,20,21,0,0,[1,26512,11],[]]]],[0,22,19,0,23,164,165,0,[1,26524,1],[[26526,2,166]]],[0,167,116,0,0,165,0,0,[1,26530,6387],[[0,33,34,0,35,168,0,0,[1,26531,53],[[26532,2,169]]],[0,170,89,0,171,172,0,0,[1,26585,6001],[[32586,2,173]]],[0,44,34,0,45,174,0,0,[1,32586,94],[[32587,2,175]]],[0,48,34,0,49,176,0,0,[1,32681,18],[]],[0,44,34,0,45,176,0,0,[1,32700,76],[[32700,2,177]]],[0,130,34,0,131,178,0,0,[1,32776,25],[]],[0,55,34,0,56,178,0,0,[1,32803,85],[[32803,2,179]]],[0,180,34,0,181,182,0,0,[1,32888,11],[]],[0,51,34,0,52,183,0,0,[1,32899,17],[[32916,2,184]]]]],[0,65,8,0,0,0,0,0,[1,32917,1],[[0,66,19,0,67,0,0,0,[1,32917,0],[]]]],[0,68,8,0,0,0,0,0,[1,32919,306],[[5,10,0,0,0,0,0,0,[1,32919,305],[[0,69,12,0,70,71,0,0,[1,32921,303],[[33224,2,185]]]]]]]]]],[[1,186,8,0,0,0,0,0,[1,1376,9003],[[0,187,34,0,188,189,0,0,[1,1378,8536],[[1379,2,190]]],[0,191,34,0,192,0,0,0,[1,9914,465],[]]]],[2,193,8,0,0,0,0,0,[1,33228,3695],[[0,194,34,0,195,0,0,0,[1,33228,3694],[]]]]],[5,5,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,27276],[],[[4,0,5,[6],[1,5861,3308],[[0,7,8,0,0,9,0,0,[1,5863,2036],[[5,10,0,0,0,0,0,0,[1,5864,2035],[[0,11,12,0,13,14,0,0,[1,5865,2034],[[7896,2,15]]]]]]],[0,16,8,0,0,17,0,0,[1,7900,15],[[0,18,19,0,20,21,0,0,[1,7900,14],[]]]],[0,22,19,0,23,24,25,0,[1,7915,1],[[7915,2,26]]],[0,22,19,0,23,27,28,0,[1,7916,0],[[7916,2,29]]],[0,30,31,0,0,32,0,0,[1,7916,1175],[[0,33,34,0,35,36,0,0,[1,7917,89],[[7918,2,37]]],[0,38,34,0,39,40,0,0,[1,8006,59],[[8007,2,41],[8034,2,42]]],[0,43,31,0,0,0,0,0,[1,8065,808],[[0,44,34,0,45,46,0,0,[1,8066,167],[[8067,2,47]]],[0,48,34,0,49,50,0,0,[1,8233,264],[]],[0,51,34,0,52,53,0,0,[1,8498,24],[[8522,2,54]]],[0,55,34,0,56,50,0,0,[1,8522,94],[[8523,2,57]]],[0,58,34,0,59,50,0,0,[1,8617,257],[]]]],[0,60,31,0,0,0,0,0,[1,8874,78],[[0,44,34,0,45,61,0,0,[1,8875,77],[[8875,2,62]]]]],[0,55,34,0,56,63,0,0,[1,8953,138],[[8953,2,64]]]]],[0,65,8,0,0,0,0,0,[1,9092,1],[[0,66,19,0,67,0,0,0,[1,9093,0],[]]]],[0,68,8,0,0,0,0,0,[1,9094,75],[[5,10,0,0,0,0,0,0,[1,9095,75],[[0,69,12,0,70,71,0,0,[1,9095,74],[[9169,2,72]]]]]]]]],[73,0,74,[75,76],[1,9170,3615],[[0,7,8,0,0,77,0,0,[1,9171,2054],[[5,10,0,0,0,0,0,0,[1,9171,2054],[[0,11,12,0,13,14,0,0,[1,9172,2052],[[11224,2,78]]]]]]],[0,79,80,0,0,81,0,0,[1,11226,1513],[[0,48,34,0,49,82,0,0,[1,11226,1288],[]],[0,83,80,0,0,84,0,0,[1,12515,140],[[0,85,34,0,86,82,87,0,[1,12516,9],[[12525,2,88]]],[0,89,90,0,91,92,93,0,[1,12525,1],[[12526,2,94]]],[3,95,0,0,0,0,0,0,[1,12526,49],[[4,96,0,0,0,0,0,0,[1,12526,28],[[0,97,90,0,98,99,0,0,[1,12526,27],[]],[0,100,90,0,101,102,93,0,[1,12554,1],[[12554,2,103]]]]],[4,104,0,0,0,0,0,0,[1,12555,20],[[0,97,90,0,98,99,0,0,[1,12555,19],[[12574,2,105]]],[0,100,90,0,101,102,93,0,[3,12575,0],[]]]]]],[0,55,34,0,56,106,0,0,[1,12575,79],[[12575,2,107]]]]],[0,44,34,0,45,108,0,0,[1,12655,83],[[12656,2,109]]]]],[0,68,8,0,0,0,0,0,[1,12739,45],[[5,10,0,0,0,0,0,0,[1,12740,44],[[0,69,12,0,70,71,0,0,[1,12741,44],[[12784,2,110]]]]]]]]],[111,0,112,[113],[1,12786,2494],[[0,7,8,0,0,114,0,0,[1,12787,2096],[[5,10,0,0,0,0,0,0,[1,12787,2095],[[0,11,12,0,13,14,0,0,[1,12787,2094],[[14881,2,115]]]]]]],[0,116,117,0,0,0,0,0,[1,14883,341],[[0,118,117,0,0,0,0,0,[1,14884,81],[[0,119,34,0,120,121,0,0,[1,14884,29],[[14885,2,122]]],[0,123,34,0,124,125,0,0,[1,14913,8],[[14922,2,126]]],[0,119,34,0,120,127,0,0,[1,14922,20],[[14923,2,128]]],[0,119,34,0,120,129,0,0,[1,14943,21],[[14944,2,130]]]]],[0,131,34,0,132,133,0,0,[1,14965,18],[]],[0,55,34,0,56,133,0,0,[1,14983,108],[[14984,2,134]]],[0,135,117,0,0,0,0,0,[1,15092,17],[[0,136,34,0,137,138,0,0,[1,15093,6],[[15098,2,139]]],[0,140,34,0,141,133,0,0,[1,15099,11],[[15104,2,142],[15109,2,143]]]]],[0,144,117,0,0,0,0,0,[1,15110,115],[[0,131,34,0,132,145,0,0,[1,15110,19],[]],[0,55,34,0,56,145,0,0,[1,15130,94],[[15130,2,146]]]]]]],[0,68,8,0,0,0,0,0,[1,15225,54],[[5,10,0,0,0,0,0,0,[1,15225,54],[[0,69,12,0,70,71,0,0,[1,15226,53],[[15279,2,147]]]]]]]]],[148,0,74,[149],[1,15280,2288],[[0,7,8,0,0,150,0,0,[1,15280,2033],[[5,10,0,0,0,0,0,0,[1,15281,2032],[[0,11,12,0,13,14,0,0,[1,15281,2032],[[17312,2,151]]]]]]],[0,79,80,0,0,152,0,0,[1,17314,226],[[0,48,34,0,49,82,0,0,[1,17314,23],[]],[0,83,80,0,0,84,0,0,[1,17338,123],[[0,85,34,0,86,82,87,0,[1,17339,7],[[17347,2,153]]],[0,89,90,0,91,92,93,0,[1,17348,2],[[17350,2,94]]],[3,95,0,0,0,0,0,0,[1,17350,18],[[4,154,0,0,0,0,0,0,[1,17351,18],[[0,97,90,0,98,99,0,0,[1,17351,17],[[17368,2,105]]],[0,100,90,0,101,102,93,0,[3,17368,0],[]]]]]],[0,55,34,0,56,106,0,0,[1,17369,92],[[17369,2,155]]]]],[0,44,34,0,45,108,0,0,[1,17461,78],[[17462,2,109]]]]],[0,68,8,0,0,0,0,0,[1,17540,27],[[5,10,0,0,0,0,0,0,[1,17541,26],[[0,69,12,0,70,71,0,0,[1,17541,25],[[17567,2,156]]]]]]]]],[157,0,158,[159],[1,17568,8688],[[0,7,8,0,0,160,0,0,[1,17569,2016],[[5,10,0,0,0,0,0,0,[1,17570,2016],[[0,11,12,0,13,14,0,0,[1,17570,2015],[[19585,2,151]]]]]]],[0,161,117,0,0,0,0,0,[1,19586,240],[[0,118,117,0,0,0,0,0,[1,19587,71],[[0,119,34,0,120,121,0,0,[1,19587,19],[[19587,2,122]]],[0,123,34,0,124,125,0,0,[1,19606,7],[[19612,2,126]]],[0,119,34,0,120,127,0,0,[1,19613,24],[[19614,2,128]]],[0,119,34,0,120,129,0,0,[1,19638,19],[[19638,2,130]]]]],[0,131,34,0,132,162,0,0,[1,19658,15],[]],[0,55,34,0,56,162,0,0,[1,19673,154],[[19673,2,163]]]]],[0,16,8,0,0,164,0,0,[1,19827,18],[[0,18,19,0,20,21,0,0,[1,19828,17],[]]]],[0,22,19,0,23,165,166,0,[1,19846,1],[[19846,2,167]]],[0,168,117,0,0,166,0,0,[1,19847,6388],[[0,33,34,0,35,169,0,0,[1,19847,56],[[19847,2,170]]],[0,171,90,0,172,173,0,0,[1,19904,6001],[[25905,2,174]]],[0,44,34,0,45,175,0,0,[1,25905,83],[[25906,2,176]]],[0,48,34,0,49,177,0,0,[1,25988,22],[]],[0,44,34,0,45,177,0,0,[1,26011,78],[[26011,2,178]]],[0,131,34,0,132,179,0,0,[1,26089,24],[]],[0,55,34,0,56,179,0,0,[1,26113,94],[[26114,2,180]]],[0,181,34,0,182,183,0,0,[1,26207,8],[]],[0,51,34,0,52,184,0,0,[1,26215,19],[[26234,2,185]]]]],[0,65,8,0,0,0,0,0,[1,26235,1],[[0,66,19,0,67,0,0,0,[1,26235,0],[]]]],[0,68,8,0,0,0,0,0,[1,26236,20],[[5,10,0,0,0,0,0,0,[1,26236,19],[[0,69,12,0,70,71,0,0,[1,26236,19],[[26255,2,186]]]]]]]]]],[[1,187,8,0,0,0,0,0,[1,613,5248],[[0,188,34,0,189,190,0,0,[1,615,4956],[[616,2,191]]],[0,192,34,0,193,0,0,0,[1,5572,289],[]]]],[2,194,8,0,0,0,0,0,[1,26257,1020],[[0,195,34,0,196,0,0,0,[1,26257,1020],[]]]]],[5,5,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*TestSuite","*C:\\Users\\giuse\\PycharmProjects\\shopProject\\tests\\TestSuite.robot","*tests/TestSuite.robot","*Test Case 01 - Login with correct credentials","*<p>Login with correct credentials\x3c/p>","*login","*Start video","*Commons","*name=Test Case 01 - Login with correct credentials","*'${video}' == '${TRUE}'","*Start Video Recording","*ScreenCapLibrary","*<p>Starts the recording of a video in the background with the specified <code>name\x3c/code>. The recording can be stopped by calling the `Stop Video Recording` keyword.\x3c/p>","*name=${name}    monitor=1    embed=True","*Automatically setting a fps of 5.0","*Open file","*${fileUserPath}    ${user}","*Open Excel Document","*ExcelLibrary","*<p>Opens xlsx document file.\x3c/p>","*filename=${fileName}    doc_id=${sheetName}","*Read Excel Cell","*<p>Returns content of a cell.\x3c/p>","*row_num=5    col_num=2","*${username}","*${username} = rahulshettyacademy","*row_num=5    col_num=3","*${password}","*${password} = learning","*Enter correct credentials","*Login","*${username}    ${password}","*Input Text","*SeleniumLibrary","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${usernameInput}    ${username}","*Typing text 'rahulshettyacademy' into text field 'id:username'.","*Input Password","*<p>Types the given password into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${passwordInput}    ${password}","*Typing password into text field 'id:password'.","*Temporally setting log level to: NONE","*Choice type of account","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*${userRadioButton}","*Clicking element 'css:input[value='user']'.","*Wait Until Element Is Visible","*<p>Waits until the element <code>locator\x3c/code> is visible.\x3c/p>","*${okayButtonModal}","*Element Should Contain","*<p>Verifies that element <code>locator\x3c/code> contains text <code>expected\x3c/code>.\x3c/p>","*${messageModalLogin}    ${expectedTextModal}    ignore_case=True","eNqVzDEKg0AQBdCrfGxWIWR7MXY5RAgWGzOLA+OM6Ijm9sEirZD6wbsLjaSO0CQMM+VbsU/JhzrG6dmbemJdSqfdy+oSHrYW7bk3MbXYWAQvgvDITm+4wVQ+yLTRjLxq72yahJ1pQai6gN+F48Ix/beE6xfn9keE","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*Clicking button 'id:okayBtn'.","*Wait Until Element Is Not Visible","*<p>Waits until the element <code>locator\x3c/code> is not visible.\x3c/p>","*Accept the terms","*${acceptTerms}","*Clicking element 'name:terms'.","*${signInButton}","*Clicking button 'id:signInBtn'.","*Close file","*Close Current Excel Document","*<p>Closes current document.\x3c/p>","*Stop video","*Stop All Video Recordings","*<p>Stops all the video recordings and generates the files in WebM format. If <code>embed\x3c/code> argument was set to <code>True\x3c/code> the videos will be displayed in the log file.\x3c/p>","*save_to_disk=True","eNqtjjEOAiEQRa9CSCx1WSsLoLG1tDcjjEKyLgQGcW/v6HoEi/mv+Xl/NIhQ8GZkapQbDc/oMQ1nrLTZqyNUZKiRY8t3Svc4M3ukwHCpFHSfoivocaYIU72Mu47Xh7T6qxI9egpGHpTKLymgUcoTLFbX1IpDUYv7/7agJaORq+/3zWpngn0DhKRQ0w==","*Test Case 02 - Add a product","*<p>Add a new product to the cart\x3c/p>","*addProduct","*correct","*name=Test Case 02 - Add a product","*Add a product","*AddProduct","*${addProduct}","*${listProducts}","*Search product","*${chooseProduct}","*Get WebElements","*<p>Returns a list of WebElement objects matching the <code>locator\x3c/code>.\x3c/p>","*${elements}","*${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session=\"3c6f3550-2c16-4dfc-b03c-a4694400424c\", element=\"c7d4d27a-de87-44b6-9a00-ca2354956a2b\")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (s...","*Set Variable","*BuiltIn","*<p>Returns the given values which can then be assigned to a variables.\x3c/p>","*1","*${index}","*${index} = 1","*${element}    IN    @{elements}","*${element} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3c6f3550-2c16-4dfc-b03c-a4694400424c&quot;, element=&quot;c7d4d27a-de87-44b6-9a00-ca2354956a2b&quot;)&gt;","*Exit For Loop If","*<p>Stops executing the enclosing FOR loop if the <code>condition\x3c/code> is true.\x3c/p>","*'${chooseProduct}' == '${element.text}'","*Evaluate","*<p>Evaluates the given expression in Python and returns the result.\x3c/p>","*${index} + 1","*${index} = 2","*${element} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3c6f3550-2c16-4dfc-b03c-a4694400424c&quot;, element=&quot;039acd29-612e-45c5-86e2-14053eaf661e&quot;)&gt;","*Exiting for loop altogether.","*xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[${index}]","*Clicking button 'xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[2]'.","*${checkoutProductButton}","*Clicking element '<a href=\"xpath://a[@class='nav-link\">xpath://a[@class='nav-link\x3c/a> btn btn-primary']'.","eNqljUEKwjAQRa8SAi61aVcukoB4he5lTEZaUCYkM7a9vYP1Bi7+e6v/vwczVXwES8JFuHvPGakbsfFhcFdoqHKD4qi55KwETamUJfGtPy14f9novz2zzJmnYM/OldUaEKbyhC36RlITmlbTn0eGt4LB7uXf9T6lhvgBv8BCMw==","*Test Case 03 - Remove a product from the cart","*<p>Remove a product from the cart\x3c/p>","*removeProduct","*name=Test Case 03 - Remove a product from the cart","*Automatically setting a fps of 6.0","*Remove a product","*Cart","*Checks the elements in the cart page before","*Element Text Should Be","*<p>Verifies that element <code>locator\x3c/code> contains exact the text <code>expected\x3c/code>.\x3c/p>","*${productStatus}    ${productTextStatus}    ignore_case=True","*Verifying element 'xpath:(//strong[normalize-space()='In Stock'])[1]' contains exact text 'in stock'.","*Page Should Contain Element","*<p>Verifies that element <code>locator\x3c/code> is found on the current page.\x3c/p>","*${totalPrice}","*Current page contains element 'css:td[class='text-right'] h3 strong'.","*${removeButton}    ${removeTextButton}    ignore_case=True","*Verifying element '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']' contains exact text 'remove'.","*${backShopPage}    ${backShopPageTextButton}    ignore_case=True","*Verifying element 'css:button[class='btn btn-default']' contains exact text 'continue shopping'.","*Element Should Be Enabled","*<p>Verifies that element identified by <code>locator\x3c/code> is enabled.\x3c/p>","*${removeButton}","*Clicking button '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']'.","*Checks the elements in the cart page after","*Page Should Not Contain Element","*<p>Verifies that element <code>locator\x3c/code> is not found on the current page.\x3c/p>","*${productStatus}","*Current page does not contain element 'xpath:(//strong[normalize-space()='In Stock'])[1]'.","*Page Should Not Contain Button","*<p>Verifies button <code>locator\x3c/code> is not found from current page.\x3c/p>","*Current page does not contain button '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']'.","*Current page does not contain input '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']'.","*Back to shop page","*${backShopPage}","*Clicking button 'css:button[class='btn btn-default']'.","eNq1jkEOAiEMRa9CSFzqoG5cABtvYNybCp0wiaQEyoxze8HxCi5+X/Lb/F8NImQcjaTKqfIwTx5puGPh3UldoWCDOrexb7phpLk70JQy+er62ZgpNnDoKweZH8fDgs8orf7GiWXyHIy8KJXeUkBlSi9YrS5Us0NRsvtPv+A1oZFb5u+jraER7AcmFFFn","*Test Case 04 - Add a new product to the cart","*addNewProduct","*name=Test Case 04 - Add a new product to the cart","*${addNewProduct}","eNqdjksKwjAURbcSghSFJqTJa2opHboGB46Sl1cJ9ANN1IG4dxW7AmeXw+Fwd08aaaI5pxfr2aUYc5c+ZI63ST7IhzXeaZUrTUumL9hseSZ/+k22T5RSXOaeG7SDqWslNFZWQBhQeGVQOLAtgFKgAXnJtkbPqcImWAdCa2o332MjkMirwcExGMcPxTV3JfvvmZTyDbU3Sw0=","*${element} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;3c6f3550-2c16-4dfc-b03c-a4694400424c&quot;, element=&quot;e1c7d6a4-22e9-4dfc-bbc7-ceeb0fa48d3a&quot;)&gt;","*Clicking button 'xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[1]'.","eNq1jrEOAiEQRH+FkFjqobGwgEuMv2BvVljDJeoSWMT7exfPX7CYN81kZiyomPHmNFVOlYfXFJCGMxZe7cwJCoqZvWAtOoYgBNETmzBlCtX3JFNH7GkPmS/bTcPrQ4/226faFDg6fTAmvbWCypTuMI+2UM0eVcn+TwcUzwmdXkp/l5YJcRg/A6BQnw==","*Test Case 05 - Purchase a product","*<p>Purchase a product\x3c/p>","*purchase","*name=Test Case 05 - Purchase a product","*Automatically setting a fps of 5.5","*Checkout product","*${checkoutButton}","*Clicking button '<a href=\"xpath://button[normalize-space()='Checkout\">xpath://button[normalize-space()='Checkout\x3c/a>']'.","*${fileCountryPath}    ${country}","*row_num=2    col_num=1","*${countryName}","*${countryName} = india","*Purchase a product","*${inputCountry}    ${countryName}","*Typing text 'india' into text field 'id:country'.","*Sleep","*<p>Pauses the test executed for the given time.\x3c/p>","*6","*Slept 6 seconds.","*${suggestCountry}","*Clicking element 'css:div[class='suggestions'] ul li a'.","*${acceptPurchaseTerms}","*Clicking element 'css:label[for='checkbox2']'.","*${purchaseButton}","*Clicking button 'css:input[value='Purchase']'.","*Wait Until Page Contains Element","*<p>Waits until the element <code>locator\x3c/code> appears on the current page.\x3c/p>","*${successPurchaseMessage}","*${successPurchaseMessage}    ${successTextMessage}    ignore_case=True","*Element 'css:.alert.alert-success.alert-dismissible' contains text 'success'.","eNqzSVTIKEpNs1XKLy0pKC3RL8tMSc3XD0ktLlE1MnBOLE4FUgamQEIXiANKi5IzIGKJQFxQlJ9SmlwSb6hXnpqUq2RnA9asUJ6ZUpJhq2RhYFBQoaSQWFqSX5CTWGlnU5wP1J6qUFyUTA3bFEoqC1JtlSAmQO2HmAekE+0A6WlGnQ==","*Open the browser","*Open Browser","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${url}    ${browser}","*Opening browser 'firefox' to base url '<a href=\"https://rahulshettyacademy.com/loginpagePractise/\">https://rahulshettyacademy.com/loginpagePractise/\x3c/a>'.","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Close the browser","*Close Browser","*<p>Closes the current browser.\x3c/p>"]);
+window.output["strings"] = window.output["strings"].concat(["*","*TestSuite","*/home/giuseppeprivitera/PycharmProjects/shopProject/tests/TestSuite.robot","*tests/TestSuite.robot","*Test Case 01 - Login with correct credentials","*<p>Login with correct credentials\x3c/p>","*login","*Start video","*Commons","*name=Test Case 01 - Login with correct credentials","*'${video}' == '${TRUE}'","*Start Video Recording","*ScreenCapLibrary","*<p>Starts the recording of a video in the background with the specified <code>name\x3c/code>. The recording can be stopped by calling the `Stop Video Recording` keyword.\x3c/p>","*name=${name}    monitor=1    embed=True","*Automatically setting a fps of 12.0","*Open file","*${fileUserPath}    ${user}","*Open Excel Document","*ExcelLibrary","*<p>Opens xlsx document file.\x3c/p>","*filename=${fileName}    doc_id=${sheetName}","*Read Excel Cell","*<p>Returns content of a cell.\x3c/p>","*row_num=5    col_num=2","*${username}","*${username} = rahulshettyacademy","*row_num=5    col_num=3","*${password}","*${password} = learning","*Enter correct credentials","*Login","*${username}    ${password}","*Input Text","*SeleniumLibrary","*<p>Types the given <code>text\x3c/code> into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${usernameInput}    ${username}","*Typing text 'rahulshettyacademy' into text field 'id:username'.","*Input Password","*<p>Types the given password into the text field identified by <code>locator\x3c/code>.\x3c/p>","*${passwordInput}    ${password}","*Typing password into text field 'id:password'.","*Temporally setting log level to: NONE","*Choice type of account","*Click Element","*<p>Click the element identified by <code>locator\x3c/code>.\x3c/p>","*${userRadioButton}","*Clicking element 'css:input[value='user']'.","*Wait Until Element Is Visible","*<p>Waits until the element <code>locator\x3c/code> is visible.\x3c/p>","*${okayButtonModal}","*Element Should Contain","*<p>Verifies that element <code>locator\x3c/code> contains text <code>expected\x3c/code>.\x3c/p>","*${messageModalLogin}    ${expectedTextModal}    ignore_case=True","eNqVzDEKg0AQBdCrfGxWIWR7MXY5RAgWGzOLA+OM6Ijm9sEirZD6wbsLjaSO0CQMM+VbsU/JhzrG6dmbemJdSqfdy+oSHrYW7bk3MbXYWAQvgvDITm+4wVQ+yLTRjLxq72yahJ1pQai6gN+F48Ix/beE6xfn9keE","*Click Button","*<p>Clicks the button identified by <code>locator\x3c/code>.\x3c/p>","*Clicking button 'id:okayBtn'.","*Wait Until Element Is Not Visible","*<p>Waits until the element <code>locator\x3c/code> is not visible.\x3c/p>","*Accept the terms","*${acceptTerms}","*Clicking element 'id:terms'.","*${signInButton}","*Clicking button 'id:signInBtn'.","*Close file","*Close Current Excel Document","*<p>Closes current document.\x3c/p>","*Stop video","*Stop All Video Recordings","*<p>Stops all the video recordings and generates the files in WebM format. If <code>embed\x3c/code> argument was set to <code>True\x3c/code> the videos will be displayed in the log file.\x3c/p>","*save_to_disk=True","eNqtjjEOAiEQRa9CSCx10UYLoLG1tDcjjEKyLmQYxL296HoEi/mv+Xl/NIhAeDMyVc6Vh2f0mIYzFl7t1BEKdqhtj3W/U7rHqbNFDh0uEaH7FB2hx4kjjOWy3zS8PqTVX5Vo0XMw8qBUfkkBlVMeYba6pEoORSH3/23Bc0YjF9/vm8XeCfYNiVRQ3w==","*Test Case 02 - Add a product","*<p>Add a new product to the cart\x3c/p>","*addProduct","*correct","*name=Test Case 02 - Add a product","*Automatically setting a fps of 10.0","*Add a product","*AddProduct","*${addProduct}","*${listProducts}","*Search product","*${chooseProduct}","*Get WebElements","*<p>Returns a list of WebElement objects matching the <code>locator\x3c/code>.\x3c/p>","*${elements}","*${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session=\"35c206b3-35cf-4a04-975f-36c0ad759d80\", element=\"92d4e73b-301c-4d89-a9b4-a6b178d35b47\")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (s...","*Set Variable","*BuiltIn","*<p>Returns the given values which can then be assigned to a variables.\x3c/p>","*1","*${index}","*${index} = 1","*${element}    IN    @{elements}","*${element} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;35c206b3-35cf-4a04-975f-36c0ad759d80&quot;, element=&quot;92d4e73b-301c-4d89-a9b4-a6b178d35b47&quot;)&gt;","*Exit For Loop If","*<p>Stops executing the enclosing FOR loop if the <code>condition\x3c/code> is true.\x3c/p>","*'${chooseProduct}' == '${element.text}'","*Evaluate","*<p>Evaluates the given expression in Python and returns the result.\x3c/p>","*${index} + 1","*${index} = 2","*${element} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;35c206b3-35cf-4a04-975f-36c0ad759d80&quot;, element=&quot;17df1c2b-8960-46d3-95f8-d917b2249a84&quot;)&gt;","*Exiting for loop altogether.","*xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[${index}]","*Clicking button 'xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[2]'.","*${checkoutProductButton}","*Clicking element '<a href=\"xpath://a[@class='nav-link\">xpath://a[@class='nav-link\x3c/a> btn btn-primary']'.","eNqljUEKwjAQRa8SAi61oRtdJAHxCt2XMRlpQZmQzLT29g7WG7j4763+/x7MVPERLAkX4W6ZM1I3YOND727QUOV6xVFzzVkJmlIpS+LxfFrx/rLRf3tmnTNPwV6cK29rQJjKE7boG0lNaFpNfx4Z3goGu5d/1/uUGuIHw/5CPw==","*Test Case 03 - Remove a product from the cart","*<p>Remove a product from the cart\x3c/p>","*removeProduct","*name=Test Case 03 - Remove a product from the cart","*Automatically setting a fps of 11.0","*Remove a product","*Cart","*Checks the elements in the cart page before","*Element Text Should Be","*<p>Verifies that element <code>locator\x3c/code> contains exact the text <code>expected\x3c/code>.\x3c/p>","*${productStatus}    ${productTextStatus}    ignore_case=True","*Verifying element 'xpath:(//strong[normalize-space()='In Stock'])[1]' contains exact text 'in stock'.","*Page Should Contain Element","*<p>Verifies that element <code>locator\x3c/code> is found on the current page.\x3c/p>","*${totalPrice}","*Current page contains element 'css:td[class='text-right'] h3 strong'.","*${removeButton}    ${removeTextButton}    ignore_case=True","*Verifying element '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']' contains exact text 'remove'.","*${backShopPage}    ${backShopPageTextButton}    ignore_case=True","*Verifying element 'css:button[class='btn btn-default']' contains exact text 'continue shopping'.","*Element Should Be Enabled","*<p>Verifies that element identified by <code>locator\x3c/code> is enabled.\x3c/p>","*${removeButton}","*Clicking button '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']'.","*Checks the elements in the cart page after","*Page Should Not Contain Element","*<p>Verifies that element <code>locator\x3c/code> is not found on the current page.\x3c/p>","*${productStatus}","*Current page does not contain element 'xpath:(//strong[normalize-space()='In Stock'])[1]'.","*Page Should Not Contain Button","*<p>Verifies button <code>locator\x3c/code> is not found from current page.\x3c/p>","*Current page does not contain button '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']'.","*Current page does not contain input '<a href=\"xpath://button[normalize-space()='Remove\">xpath://button[normalize-space()='Remove\x3c/a>']'.","*Back to shop page","*${backShopPage}","*Clicking button 'css:button[class='btn btn-default']'.","eNq1jkEOAiEMRa9CSFzqEF3oAth4A+PeVOiESSQlUGac2wuOV3Dx+5Lf5v9qECHjaCRVTpWHefJIwx0L747qCgUb1KmNfdMNI83dgaaUyVfXz8ZMsYFDXznI/DgfFnxGafU3TiyT52DkRan0lgIqU3rBanWhmh2Kkt1/+gWvCY3cMn8fbQ2NYD8q3FFz","*Test Case 04 - Add a new product to the cart","*addNewProduct","*name=Test Case 04 - Add a new product to the cart","*Automatically setting a fps of 10.5","*${addNewProduct}","*${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session=\"35c206b3-35cf-4a04-975f-36c0ad759d80\", element=\"abc9ec6f-b5ed-43fc-9dcf-e67955052c24\")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (s...","*${element} = &lt;selenium.webdriver.remote.webelement.WebElement (session=&quot;35c206b3-35cf-4a04-975f-36c0ad759d80&quot;, element=&quot;abc9ec6f-b5ed-43fc-9dcf-e67955052c24&quot;)&gt;","*Clicking button 'xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[1]'.","eNq1jsEKAjEQQ3+lFDzqFhH00C6Iv+BdxnakC+qUdmrdv3fq+gse8nIJSSyomPHmNFVOlYfXFJCGMxZebc0JCoqZnWAtOoYgBNETmzBlCtX3JFNH7GkPmS/7TcPrQ4/226faFDg6fTAmvbWCypTuMI+2UM0eVcn+TwcUzwmdXkp/l5YJcRg/CG5Qqw==","*Test Case 05 - Purchase a product","*<p>Purchase a product\x3c/p>","*purchase","*name=Test Case 05 - Purchase a product","*Checkout product","*${checkoutButton}","*Clicking button '<a href=\"xpath://button[normalize-space()='Checkout\">xpath://button[normalize-space()='Checkout\x3c/a>']'.","*${fileCountryPath}    ${country}","*row_num=2    col_num=1","*${countryName}","*${countryName} = india","*Purchase a product","*${inputCountry}    ${countryName}","*Typing text 'india' into text field 'id:country'.","*Sleep","*<p>Pauses the test executed for the given time.\x3c/p>","*6","*Slept 6 seconds.","*${suggestCountry}","*Clicking element 'css:div[class='suggestions'] ul li a'.","*${acceptPurchaseTerms}","*Clicking element 'css:label[for='checkbox2']'.","*${purchaseButton}","*Clicking button 'css:input[value='Purchase']'.","*Wait Until Page Contains Element","*<p>Waits until the element <code>locator\x3c/code> appears on the current page.\x3c/p>","*${successPurchaseMessage}","*${successPurchaseMessage}    ${successTextMessage}    ignore_case=True","*Element 'css:.alert.alert-success.alert-dismissible' contains text 'success'.","eNqzSVTIKEpNs1XKLy0pKC3RL8tMSc3XD0ktLlE1MnBOLE4FUgamQEIXiANKi5IzIGKJQFxQlJ9SmlwSb65XnpqUq2RnA9asUJ6ZUpJhq2RhYFBQoaSQWFqSX5CTWGlnU5wP1J6qUFyUTA3bFEoqC1JtlSAmQO2HmAekE+0A7cVGqQ==","*Open the browser","*Open Browser","*<p>Opens a new browser instance to the optional <code>url\x3c/code>.\x3c/p>","*${url}    ${browser}","*Opening browser 'firefox' to base url '<a href=\"https://rahulshettyacademy.com/loginpagePractise/\">https://rahulshettyacademy.com/loginpagePractise/\x3c/a>'.","*Maximize Browser Window","*<p>Maximizes current browser window.\x3c/p>","*Close the browser","*Close Browser","*<p>Closes the current browser.\x3c/p>"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:23","fail":0,"label":"All Tests","pass":5,"skip":0}],[{"elapsed":"00:00:03","fail":0,"label":"addNewProduct","pass":1,"skip":0},{"elapsed":"00:00:05","fail":0,"label":"addProduct","pass":1,"skip":0},{"elapsed":"00:00:05","fail":0,"label":"correct","pass":1,"skip":0},{"elapsed":"00:00:04","fail":0,"label":"login","pass":1,"skip":0},{"elapsed":"00:00:09","fail":0,"label":"purchase","pass":1,"skip":0},{"elapsed":"00:00:03","fail":0,"label":"removeProduct","pass":1,"skip":0}],[{"elapsed":"00:00:37","fail":0,"id":"s1","label":"TestSuite","name":"TestSuite","pass":5,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:20","fail":0,"label":"All Tests","pass":5,"skip":0}],[{"elapsed":"00:00:02","fail":0,"label":"addNewProduct","pass":1,"skip":0},{"elapsed":"00:00:04","fail":0,"label":"addProduct","pass":1,"skip":0},{"elapsed":"00:00:04","fail":0,"label":"correct","pass":1,"skip":0},{"elapsed":"00:00:03","fail":0,"label":"login","pass":1,"skip":0},{"elapsed":"00:00:09","fail":0,"label":"purchase","pass":1,"skip":0},{"elapsed":"00:00:02","fail":0,"label":"removeProduct","pass":1,"skip":0}],[{"elapsed":"00:00:27","fail":0,"id":"s1","label":"TestSuite","name":"TestSuite","pass":5,"skip":0}]];
 </script>
 <script type="text/javascript">
 window.output["errors"] = [];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1763304340313;
+window.output["baseMillis"] = 1767712141140;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 36952;
+window.output["generated"] = 27288;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2154,8 +2153,9 @@ function addErrors() {
     var errors = window.testdata.errorIterator();
     if (errors.hasNext()) {
         $.tmpl('errorHeaderTemplate').appendTo($('body'));
-        drawErrorsRecursively(errors, $('#errors'));
+        drawErrorsRecursively(errors, $('#errors .messages'));
     }
+    toggleElement('errors');
 }
 
 function drawErrorsRecursively(errors, target) {
@@ -2189,7 +2189,7 @@ function makeElementVisible(id) {
 }
 
 function addExecutionLog(main) {
-    $('body').append($(testOrTask('<h2>{Test} Execution Log</h2>')),
+    $('body').append('<h2>Execution Log</h2>',
                      $.tmpl('suiteTemplate', main));
 }
 </script>
@@ -2234,20 +2234,31 @@ function addExecutionLog(main) {
 </script>
 
 <script type="text/x-jquery-tmpl" id="errorHeaderTemplate">
-  <h2>{{= testOrTask('{Test}')}} Execution Errors</h2>
-  <table id="errors"></table>
+  <h2>Execution Errors</h2>
+  <div id="errors">
+    <div class="element-header closed" onclick="toggleElement('errors')">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label error">ERRORS</div>
+      <div class="name">Errors and warnings during execution</div>
+    </div>
+    <div class="children">
+      <table class="messages"></table>
+    </div>
+  </div>
 </script>
 
 <script type="text/x-jquery-tmpl" id="errorTemplate">
   <tr id="${id}" class="message-row">
-    <td class="error-time">
+    <td class="time">
       {{if link}}
       <a onclick="makeElementVisible('${link}')" href="#${link}" title="Link to details">${date} ${time}</a>
       {{else}}
       ${date} ${time}
       {{/if}}
     </td>
-    <td class="${level.toLowerCase()} level"><span class="label ${level.toLowerCase()}">${level}</span></td>
+    <td class="${level.toLowerCase()} level">
+      <span class="label ${level.toLowerCase()}">${level}</span>
+    </td>
     <td class="message">{{html text}}</td>
     <td class="select-message" onclick="javascript:selectMessage('${id}')" title="Select message text">
       <div></div>
@@ -2257,18 +2268,18 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="suiteTemplate">
   <div id="${id}" class="suite">
-    <div class="element-header closed" onclick="toggleSuite('${id}')">
-      <div class="element-header-left" title="SUITE  {{html name}}  [${status}]">
-        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label ${status.toLowerCase()}">SUITE</span>
-        <span class="name">{{html name}}</span>
-      </div>
-      <div class="element-header-right" onclick="stopPropagation(event)" title="">
+    <div class="element-header closed" onclick="toggleSuite('${id}')"
+         title="SUITE  {{html name}}  [${status}]">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label ${status.toLowerCase()}">SUITE</div>
+      <div class="name">{{html name}}</div>
+      <div class="elapsed" title="Elapsed time">${times.elapsedTime}</div>
+      <div class="element-header-menu" onclick="stopPropagation(event)" title="">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this suite" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" onclick="makeElementVisible('${id}')"
+           title="Link to this suite" href="#${id}"></a>
       </div>
-      <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
     <div class="children">
       <table class="metadata">
@@ -2319,18 +2330,18 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="testTemplate">
   <div id="${id}" class="test">
-    <div class="element-header closed" onclick="toggleTest('${id}')">
-      <div class="element-header-left" title="{{= testOrTask('{TEST}')}}  {{html name}}  [${status}]">
-        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label ${status.toLowerCase()}">{{= testOrTask('{TEST}')}}</span>
-        <span class="name">{{html name}}</span>
-      </div>
-      <div class="element-header-right" onclick="stopPropagation(event)" title="">
+    <div class="element-header closed" onclick="toggleTest('${id}')"
+         title="{{= testOrTask('{TEST}')}}  {{html name}}  [${status}]">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label ${status.toLowerCase()}">{{= testOrTask('{TEST}')}}</div>
+      <div class="name">{{html name}}</div>
+      <div class="elapsed" title="Elapsed time">${times.elapsedTime}</div>
+      <div class="element-header-menu" onclick="stopPropagation(event)" title="">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this {{= testOrTask('{test}')}}" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" href="#${id}" onclick="makeElementVisible('${id}')"
+           title="Link to this {{= testOrTask('{test}')}}"></a>
       </div>
-      <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
     <div class="children">
       <table class="metadata">
@@ -2377,21 +2388,20 @@ function addExecutionLog(main) {
 
 <script type="text/x-jquery-tmpl" id="keywordTemplate">
   <div id="${id}" class="keyword">
-    <div class="element-header closed" onclick="toggleKeyword('${id}')">
-      <div class="element-header-left" title="${type}  {{if name}}{{html fullName}}  {{/if}}[${status}]">
-        <span class="elapsed" title="Elapsed time">${times.elapsedTime}</span>
-        <span class="label ${status.toLowerCase()}">${type}</span>
-        <span class="assign">{{html assign}}</span>
-        <span class="name"><span class="parent-name">{{html libname}}{{if libname}} . {{/if}}</span>{{html name}}</span>
-        &nbsp;
-        <span class="arg">{{html arguments}}</span>
-      </div>
-      <div class="element-header-right" onclick="stopPropagation(event)">
+    <div class="element-header closed" onclick="toggleKeyword('${id}')"
+         title="${type}  {{if name}}{{html fullName}}  {{/if}}[${status}]">
+      <div class="element-header-toggle" title="Toggle visibility"></div>
+      <div class="label ${status.toLowerCase()}">${type}</div>
+      {{if assign}}<div class="assign">{{html assign}}&nbsp;=</div>{{/if}}
+      <div class="name">{{if libname}}<span class="parent-name">{{html libname}} . </span>{{/if}}{{html name}}</div>
+      <div class="arg">{{html arguments}}</div>
+      <div class="elapsed" title="Elapsed time">${times.elapsedTime}</div>
+      <div class="element-header-menu" onclick="stopPropagation(event)">
         <a class="expand" title="Expand all" href="javascript:expandAll('${id}')"></a>
         <a class="collapse" title="Collapse all" href="javascript:collapseAll('${id}')"></a>
-        <a class="link" title="Link to this item" href="#${id}" onclick="makeElementVisible('${id}')"></a>
+        <a class="link" onclick="makeElementVisible('${id}')"
+           title="Link to this item" href="#${id}"></a>
       </div>
-      <div class="element-header-toggle" title="Toggle visibility"></div>
     </div>
     <div class="children">
       <table class="metadata keyword-metadata">

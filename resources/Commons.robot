@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary      screenshot_root_directory=${imagePath}
-Library    ScreenCapLibrary     screenshot_directory=${videoPath}
+Library    ScreenCapLibrary     screenshot_directory=${videoPath}    screenshot_module=PyGTK
 Library    ExcelLibrary
 Library    BuiltIn
 
