@@ -27,13 +27,16 @@ Back to shop page
 Remove a product
     Checks The Elements In The Cart Page Before
     Element Should Be Enabled    ${removeButton}
+    Sleep    2
     Click Button    ${removeButton}
     Checks The Elements In The Cart Page After
+    Sleep    2
     Back To Shop Page
 
 Checkout product
     Checks The Elements In The Cart Page Before
     Element Should Be Enabled    ${checkoutButton}
+    Sleep    2
     Click Button    ${checkoutButton}
 
 Purchase a product

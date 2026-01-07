@@ -15,9 +15,9 @@ Search product
 
 Add a product
     [Arguments]    ${chooseProduct}
-    #sleep    5
     Wait Until Element Is Visible    ${listProducts}
     Search Product    ${chooseProduct}
+    Sleep    2
     Click Element    ${checkoutProductButton}
 
 Check the text of checkout button
