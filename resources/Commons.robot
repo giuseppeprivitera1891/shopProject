@@ -31,8 +31,8 @@ Close the browser
     Close Browser
 
 *** Variables ***
-${imagePath}    ../../PycharmProjects/shopProject/output/image
-${videoPath}    ../../PycharmProjects/shopProject/output/video
+${imagePath}    ../../PycharmProjects/shopProject/output/screenshots
+${videoPath}    ../../PycharmProjects/shopProject/output/videos
 ${url}   https://rahulshettyacademy.com/loginpagePractise/
 ${video}    ${TRUE}
 ${browser}    firefox
