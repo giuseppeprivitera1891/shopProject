@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.4.1 (Python 3.12.3 on linux)" generated="2026-01-07T16:11:43.903046" rpa="false" schemaversion="5">
+<robot generator="Robot 7.4.1 (Python 3.12.3 on linux)" generated="2026-01-28T09:49:13.808250" rpa="false" schemaversion="5">
 <suite id="s1" name="TestSuite" source="/home/giuseppeprivitera/PycharmProjects/shopProject/tests/TestSuite.robot">
 <kw name="Open the browser" owner="Commons" type="SETUP">
 <kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:44.289769" level="INFO">Opening browser 'firefox' to base url 'https://rahulshettyacademy.com/loginpagePractise/'.</msg>
+<msg time="2026-01-28T09:49:14.293965" level="INFO">Opening browser 'chrome' to base url 'https://rahulshettyacademy.com/loginpagePractise/'.</msg>
 <arg>${url}</arg>
 <arg>${browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2026-01-07T16:11:44.289509" elapsed="2.407807"/>
+<status status="PASS" start="2026-01-28T09:49:14.293729" elapsed="30.418225"/>
 </kw>
 <kw name="Maximize Browser Window" owner="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2026-01-07T16:11:46.697515" elapsed="0.311883"/>
+<status status="PASS" start="2026-01-28T09:49:44.712292" elapsed="0.020667"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:11:44.288857" elapsed="2.720713"/>
+<status status="PASS" start="2026-01-28T09:49:14.293123" elapsed="30.439987"/>
 </kw>
 <test id="s1-t1" name="Test Case 01 - Login with correct credentials" line="18">
 <kw name="Start video" owner="Commons">
@@ -25,118 +25,118 @@
 <arg>embed=True</arg>
 <doc>Starts the recording of a video in the background with the specified ``name``.
 The recording can be stopped by calling the `Stop Video Recording` keyword.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:47.011016" elapsed="0.000018"/>
+<status status="NOT RUN" start="2026-01-28T09:49:44.734317" elapsed="0.000025"/>
 </kw>
-<status status="NOT RUN" start="2026-01-07T16:11:47.010806" elapsed="0.000261"/>
+<status status="NOT RUN" start="2026-01-28T09:49:44.734084" elapsed="0.000300"/>
 </branch>
-<status status="PASS" start="2026-01-07T16:11:47.010775" elapsed="0.000319"/>
+<status status="PASS" start="2026-01-28T09:49:44.734057" elapsed="0.000364"/>
 </if>
 <arg>name=Test Case 01 - Login with correct credentials</arg>
-<status status="PASS" start="2026-01-07T16:11:47.010459" elapsed="0.000670"/>
+<status status="PASS" start="2026-01-28T09:49:44.733813" elapsed="0.000663"/>
 </kw>
 <kw name="Open file" owner="Commons">
 <kw name="Open Excel Document" owner="ExcelLibrary">
 <arg>filename=${fileName}</arg>
 <arg>doc_id=${sheetName}</arg>
 <doc>Opens xlsx document file.</doc>
-<status status="PASS" start="2026-01-07T16:11:47.011406" elapsed="0.003920"/>
+<status status="PASS" start="2026-01-28T09:49:44.734844" elapsed="0.007032"/>
 </kw>
 <arg>${fileUserPath}</arg>
 <arg>${user}</arg>
-<status status="PASS" start="2026-01-07T16:11:47.011246" elapsed="0.004146"/>
+<status status="PASS" start="2026-01-28T09:49:44.734620" elapsed="0.007402"/>
 </kw>
 <kw name="Read Excel Cell" owner="ExcelLibrary">
-<msg time="2026-01-07T16:11:47.015717" level="INFO">${username} = rahulshettyacademy</msg>
+<msg time="2026-01-28T09:49:44.742531" level="INFO">${username} = rahulshettyacademy</msg>
 <var>${username}</var>
 <arg>row_num=5</arg>
 <arg>col_num=2</arg>
 <doc>Returns content of a cell.</doc>
-<status status="PASS" start="2026-01-07T16:11:47.015530" elapsed="0.000215"/>
+<status status="PASS" start="2026-01-28T09:49:44.742264" elapsed="0.000303"/>
 </kw>
 <kw name="Read Excel Cell" owner="ExcelLibrary">
-<msg time="2026-01-07T16:11:47.016007" level="INFO">${password} = learning</msg>
+<msg time="2026-01-28T09:49:44.742882" level="INFO">${password} = learning</msg>
 <var>${password}</var>
 <arg>row_num=5</arg>
 <arg>col_num=3</arg>
 <doc>Returns content of a cell.</doc>
-<status status="PASS" start="2026-01-07T16:11:47.015861" elapsed="0.000164"/>
+<status status="PASS" start="2026-01-28T09:49:44.742702" elapsed="0.000203"/>
 </kw>
 <kw name="Enter correct credentials" owner="Login">
 <kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:47.016631" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
+<msg time="2026-01-28T09:49:44.743785" level="INFO">Typing text 'rahulshettyacademy' into text field 'id:username'.</msg>
 <arg>${usernameInput}</arg>
 <arg>${username}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:47.016374" elapsed="0.036921"/>
+<status status="PASS" start="2026-01-28T09:49:44.743382" elapsed="0.087676"/>
 </kw>
 <kw name="Input Password" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:47.053711" level="INFO">Typing password into text field 'id:password'.</msg>
-<msg time="2026-01-07T16:11:47.069448" level="INFO">Temporally setting log level to: NONE</msg>
+<msg time="2026-01-28T09:49:44.831624" level="INFO">Typing password into text field 'id:password'.</msg>
+<msg time="2026-01-28T09:49:44.850998" level="INFO">Temporally setting log level to: NONE</msg>
 <arg>${passwordInput}</arg>
 <arg>${password}</arg>
 <doc>Types the given password into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:47.053471" elapsed="0.025770"/>
+<status status="PASS" start="2026-01-28T09:49:44.831312" elapsed="0.062704"/>
 </kw>
 <kw name="Choice type of account" owner="Login">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:47.079932" level="INFO">Clicking element 'css:input[value='user']'.</msg>
+<msg time="2026-01-28T09:49:44.894721" level="INFO">Clicking element 'css:input[value='user']'.</msg>
 <arg>${userRadioButton}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:47.079733" elapsed="0.073660"/>
+<status status="PASS" start="2026-01-28T09:49:44.894527" elapsed="0.052774"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:11:48.153930" level="INFO">Slept 1 second.</msg>
+<msg time="2026-01-28T09:49:45.948041" level="INFO">Slept 1 second.</msg>
 <arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:11:47.153550" elapsed="1.000578"/>
+<status status="PASS" start="2026-01-28T09:49:44.947549" elapsed="1.000695"/>
 </kw>
 <kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:48.169224" level="INFO">Element 'xpath://p[contains(text(),'You will be limited to only fewer functionalities ')]' contains text 'You will be limited to only fewer functionalities'.</msg>
+<msg time="2026-01-28T09:49:45.968552" level="INFO">Element 'xpath://p[contains(text(),'You will be limited to only fewer functionalities ')]' contains text 'You will be limited to only fewer functionalities'.</msg>
 <arg>${messageModalLogin}</arg>
 <arg>${expectedTextModal}</arg>
 <arg>ignore_case=True</arg>
 <doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:11:48.154402" elapsed="0.014935"/>
+<status status="PASS" start="2026-01-28T09:49:45.948574" elapsed="0.020104"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:48.169760" level="INFO">Clicking button 'id:okayBtn'.</msg>
+<msg time="2026-01-28T09:49:45.969182" level="INFO">Clicking button 'id:okayBtn'.</msg>
 <arg>${okayButtonModal}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:48.169520" elapsed="0.069827"/>
+<status status="PASS" start="2026-01-28T09:49:45.968936" elapsed="0.047780"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:11:49.240197" level="INFO">Slept 1 second.</msg>
+<msg time="2026-01-28T09:49:47.017363" level="INFO">Slept 1 second.</msg>
 <arg>1</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:11:48.239643" elapsed="1.000746"/>
+<status status="PASS" start="2026-01-28T09:49:46.016927" elapsed="1.000704"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:11:47.079465" elapsed="2.161072"/>
+<status status="PASS" start="2026-01-28T09:49:44.894265" elapsed="2.123520"/>
 </kw>
 <kw name="Accept the terms" owner="Login">
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:49.241452" level="INFO">Clicking element 'id:terms'.</msg>
+<msg time="2026-01-28T09:49:47.018682" level="INFO">Clicking element 'id:terms'.</msg>
 <arg>${acceptTerms}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:49.241182" elapsed="0.084155"/>
+<status status="PASS" start="2026-01-28T09:49:47.018426" elapsed="0.047582"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:11:49.240814" elapsed="0.084695"/>
+<status status="PASS" start="2026-01-28T09:49:47.018061" elapsed="0.048080"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:49.326062" level="INFO">Clicking button 'id:signInBtn'.</msg>
+<msg time="2026-01-28T09:49:47.066563" level="INFO">Clicking button 'id:signInBtn'.</msg>
 <arg>${signInButton}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:49.325696" elapsed="0.090885"/>
+<status status="PASS" start="2026-01-28T09:49:47.066297" elapsed="0.048605"/>
 </kw>
 <arg>${username}</arg>
 <arg>${password}</arg>
-<status status="PASS" start="2026-01-07T16:11:47.016181" elapsed="2.400579"/>
+<status status="PASS" start="2026-01-28T09:49:44.743084" elapsed="2.371956"/>
 </kw>
 <kw name="Close file" owner="Commons">
 <kw name="Close Current Excel Document" owner="ExcelLibrary">
 <doc>Closes current document.</doc>
-<status status="PASS" start="2026-01-07T16:11:49.417469" elapsed="0.000120"/>
+<status status="PASS" start="2026-01-28T09:49:47.115570" elapsed="0.000122"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:11:49.417108" elapsed="0.000537"/>
+<status status="PASS" start="2026-01-28T09:49:47.115288" elapsed="0.000468"/>
 </kw>
 <kw name="Stop video" owner="Commons">
 <if>
@@ -145,17 +145,17 @@ The recording can be stopped by calling the `Stop Video Recording` keyword.</doc
 <arg>save_to_disk=True</arg>
 <doc>Stops all the video recordings and generates the files in WebM format. If ``embed`` argument
 was set to ``True`` the videos will be displayed in the log file.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:49.418330" elapsed="0.000024"/>
+<status status="NOT RUN" start="2026-01-28T09:49:47.116344" elapsed="0.000022"/>
 </kw>
-<status status="NOT RUN" start="2026-01-07T16:11:49.418073" elapsed="0.000316"/>
+<status status="NOT RUN" start="2026-01-28T09:49:47.116136" elapsed="0.000262"/>
 </branch>
-<status status="PASS" start="2026-01-07T16:11:49.418040" elapsed="0.000390"/>
+<status status="PASS" start="2026-01-28T09:49:47.116107" elapsed="0.000326"/>
 </if>
-<status status="PASS" start="2026-01-07T16:11:49.417876" elapsed="0.000593"/>
+<status status="PASS" start="2026-01-28T09:49:47.115959" elapsed="0.000523"/>
 </kw>
 <doc>Login with correct credentials</doc>
 <tag>login</tag>
-<status status="PASS" start="2026-01-07T16:11:47.009670" elapsed="2.408932"/>
+<status status="PASS" start="2026-01-28T09:49:44.733203" elapsed="2.383392"/>
 </test>
 <test id="s1-t2" name="Test Case 02 - Add a product" line="29">
 <kw name="Start video" owner="Commons">
@@ -167,116 +167,47 @@ was set to ``True`` the videos will be displayed in the log file.</doc>
 <arg>embed=True</arg>
 <doc>Starts the recording of a video in the background with the specified ``name``.
 The recording can be stopped by calling the `Stop Video Recording` keyword.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:49.419593" elapsed="0.000022"/>
+<status status="NOT RUN" start="2026-01-28T09:49:47.117551" elapsed="0.000021"/>
 </kw>
-<status status="NOT RUN" start="2026-01-07T16:11:49.419426" elapsed="0.000309"/>
+<status status="NOT RUN" start="2026-01-28T09:49:47.117359" elapsed="0.000311"/>
 </branch>
-<status status="PASS" start="2026-01-07T16:11:49.419409" elapsed="0.000368"/>
+<status status="PASS" start="2026-01-28T09:49:47.117342" elapsed="0.000358"/>
 </if>
 <arg>name=Test Case 02 - Add a product</arg>
-<status status="PASS" start="2026-01-07T16:11:49.419234" elapsed="0.000585"/>
+<status status="PASS" start="2026-01-28T09:49:47.117173" elapsed="0.000562"/>
 </kw>
 <kw name="Add a product" owner="AddProduct">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2026-01-28T09:49:52.673532" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/screenshots/selenium-screenshot-9.png"&gt;&lt;img src="output/screenshots/selenium-screenshot-9.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-01-28T09:49:52.673717" level="FAIL">Element 'css:.card-title' not visible after 5 seconds.</msg>
 <arg>${listProducts}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-01-07T16:11:49.420258" elapsed="3.273488"/>
+<status status="FAIL" start="2026-01-28T09:49:47.118055" elapsed="5.559595">Element 'css:.card-title' not visible after 5 seconds.</status>
 </kw>
 <kw name="Search product" owner="AddProduct">
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:52.696893" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="4e826d7b-ae43-46c8-8393-f023898296b9", element="f890ccd7-97c9-4484-9216-a8edf085a4c3")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (s...</msg>
-<var>${elements}</var>
-<arg>${listProducts}</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:52.694517" elapsed="0.002413"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-01-07T16:11:52.697301" level="INFO">${index} = 1</msg>
-<var>${index}</var>
-<arg>1</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-01-07T16:11:52.697048" elapsed="0.000275"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Exit For Loop If" owner="BuiltIn">
-<arg>'${chooseProduct}' == '${element.text}'</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" start="2026-01-07T16:11:52.697631" elapsed="0.007417"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<msg time="2026-01-07T16:11:52.705613" level="INFO">${index} = 2</msg>
-<var>${index}</var>
-<arg>${index} + 1</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="PASS" start="2026-01-07T16:11:52.705260" elapsed="0.000379"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="4e826d7b-ae43-46c8-8393-f023898296b9", element="f890ccd7-97c9-4484-9216-a8edf085a4c3")&gt;</var>
-<status status="PASS" start="2026-01-07T16:11:52.697544" elapsed="0.008142"/>
-</iter>
-<iter>
-<kw name="Exit For Loop If" owner="BuiltIn">
-<msg time="2026-01-07T16:11:52.712890" level="INFO">Exiting for loop altogether.</msg>
-<arg>'${chooseProduct}' == '${element.text}'</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" start="2026-01-07T16:11:52.705931" elapsed="0.007061"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${index}</var>
-<arg>${index} + 1</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:52.713110" elapsed="0.000025"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="4e826d7b-ae43-46c8-8393-f023898296b9", element="f38ba4d5-9c2a-4c78-8659-e3428a500203")&gt;</var>
-<status status="PASS" start="2026-01-07T16:11:52.705837" elapsed="0.007331"/>
-</iter>
-<var>${element}</var>
-<value>@{elements}</value>
-<status status="PASS" start="2026-01-07T16:11:52.697390" elapsed="0.015826"/>
-</for>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:52.713522" level="INFO">Clicking button 'xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[2]'.</msg>
-<arg>xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[${index}]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:52.713324" elapsed="0.065218"/>
-</kw>
 <arg>${chooseProduct}</arg>
-<status status="PASS" start="2026-01-07T16:11:52.694147" elapsed="0.084674"/>
+<status status="NOT RUN" start="2026-01-28T09:49:52.677928" elapsed="0.000036"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:11:54.780690" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:11:52.779020" elapsed="2.001956"/>
+<status status="NOT RUN" start="2026-01-28T09:49:52.678063" elapsed="0.000020"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:54.781738" level="INFO">Clicking element 'xpath://a[@class='nav-link btn btn-primary']'.</msg>
 <arg>${checkoutProductButton}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:54.781321" elapsed="0.076134"/>
+<status status="NOT RUN" start="2026-01-28T09:49:52.678164" elapsed="0.000016"/>
 </kw>
 <arg>${addProduct}</arg>
-<status status="PASS" start="2026-01-07T16:11:49.419966" elapsed="5.437666"/>
+<status status="FAIL" start="2026-01-28T09:49:47.117863" elapsed="5.560416">Element 'css:.card-title' not visible after 5 seconds.</status>
 </kw>
 <kw name="Stop video" owner="Commons">
-<if>
-<branch type="IF" condition="'${video}' == '${TRUE}'">
-<kw name="Stop All Video Recordings" owner="ScreenCapLibrary">
-<arg>save_to_disk=True</arg>
-<doc>Stops all the video recordings and generates the files in WebM format. If ``embed`` argument
-was set to ``True`` the videos will be displayed in the log file.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:54.858351" elapsed="0.000024"/>
-</kw>
-<status status="NOT RUN" start="2026-01-07T16:11:54.858140" elapsed="0.000269"/>
-</branch>
-<status status="PASS" start="2026-01-07T16:11:54.858121" elapsed="0.000317"/>
-</if>
-<status status="PASS" start="2026-01-07T16:11:54.857920" elapsed="0.000553"/>
+<status status="NOT RUN" start="2026-01-28T09:49:52.678480" elapsed="0.000022"/>
 </kw>
 <doc>Add a new product to the cart</doc>
 <tag>addProduct</tag>
 <tag>correct</tag>
-<status status="PASS" start="2026-01-07T16:11:49.418855" elapsed="5.439721"/>
+<status status="FAIL" start="2026-01-28T09:49:47.116789" elapsed="5.561856">Element 'css:.card-title' not visible after 5 seconds.</status>
 </test>
 <test id="s1-t3" name="Test Case 03 - Remove a product from the cart" line="36">
 <kw name="Start video" owner="Commons">
@@ -288,122 +219,82 @@ was set to ``True`` the videos will be displayed in the log file.</doc>
 <arg>embed=True</arg>
 <doc>Starts the recording of a video in the background with the specified ``name``.
 The recording can be stopped by calling the `Stop Video Recording` keyword.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:54.859392" elapsed="0.000021"/>
+<status status="NOT RUN" start="2026-01-28T09:49:52.679526" elapsed="0.000021"/>
 </kw>
-<status status="NOT RUN" start="2026-01-07T16:11:54.859234" elapsed="0.000214"/>
+<status status="NOT RUN" start="2026-01-28T09:49:52.679340" elapsed="0.000243"/>
 </branch>
-<status status="PASS" start="2026-01-07T16:11:54.859222" elapsed="0.000250"/>
+<status status="PASS" start="2026-01-28T09:49:52.679322" elapsed="0.000301"/>
 </if>
 <arg>name=Test Case 03 - Remove a product from the cart</arg>
-<status status="PASS" start="2026-01-07T16:11:54.859069" elapsed="0.000437"/>
+<status status="PASS" start="2026-01-28T09:49:52.679146" elapsed="0.000515"/>
 </kw>
 <kw name="Remove a product" owner="Cart">
 <kw name="Checks the elements in the cart page before" owner="Cart">
 <kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:54.860164" level="INFO">Verifying element 'xpath:(//strong[normalize-space()='In Stock'])[1]' contains exact text 'in stock'.</msg>
+<msg time="2026-01-28T09:49:52.680317" level="INFO">Verifying element 'xpath:(//strong[normalize-space()='In Stock'])[1]' contains exact text 'in stock'.</msg>
+<msg time="2026-01-28T09:49:53.078905" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/screenshots/selenium-screenshot-10.png"&gt;&lt;img src="output/screenshots/selenium-screenshot-10.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-01-28T09:49:53.079067" level="FAIL">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</msg>
 <arg>${productStatus}</arg>
 <arg>${productTextStatus}</arg>
 <arg>ignore_case=True</arg>
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:11:54.859953" elapsed="0.009682"/>
+<status status="FAIL" start="2026-01-28T09:49:52.680107" elapsed="0.402103">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </kw>
 <kw name="Page Should Contain Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:54.872046" level="INFO">Current page contains element 'css:td[class='text-right'] h3 strong'.</msg>
 <arg>${totalPrice}</arg>
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
-<status status="PASS" start="2026-01-07T16:11:54.869859" elapsed="0.002256"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.082415" elapsed="0.000038"/>
 </kw>
 <kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:54.872461" level="INFO">Verifying element 'xpath://button[normalize-space()='Remove']' contains exact text 'remove'.</msg>
 <arg>${removeButton}</arg>
 <arg>${removeTextButton}</arg>
 <arg>ignore_case=True</arg>
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:11:54.872238" elapsed="0.006570"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.082531" elapsed="0.000017"/>
 </kw>
 <kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:54.879161" level="INFO">Verifying element 'css:button[class='btn btn-default']' contains exact text 'continue shopping'.</msg>
 <arg>${backShopPage}</arg>
 <arg>${backShopPageTextButton}</arg>
 <arg>ignore_case=True</arg>
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:11:54.878945" elapsed="0.006277"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.082613" elapsed="0.000015"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:11:54.859818" elapsed="0.025552"/>
+<status status="FAIL" start="2026-01-28T09:49:52.679973" elapsed="0.402746">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </kw>
 <kw name="Element Should Be Enabled" owner="SeleniumLibrary">
 <arg>${removeButton}</arg>
 <doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" start="2026-01-07T16:11:54.885473" elapsed="0.006341"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.082794" elapsed="0.000017"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:11:56.892922" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:11:54.891946" elapsed="2.001213"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.082874" elapsed="0.000017"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:56.893915" level="INFO">Clicking button 'xpath://button[normalize-space()='Remove']'.</msg>
 <arg>${removeButton}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:56.893499" elapsed="0.078108"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.082951" elapsed="0.000014"/>
 </kw>
 <kw name="Checks the elements in the cart page after" owner="Cart">
-<kw name="Page Should Not Contain Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:56.975568" level="INFO">Current page does not contain element 'xpath:(//strong[normalize-space()='In Stock'])[1]'.</msg>
-<arg>${productStatus}</arg>
-<doc>Verifies that element ``locator`` is not found on the current page.</doc>
-<status status="PASS" start="2026-01-07T16:11:56.972303" elapsed="0.003372"/>
-</kw>
-<kw name="Page Should Not Contain Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:56.977792" level="INFO">Current page does not contain button 'xpath://button[normalize-space()='Remove']'.</msg>
-<msg time="2026-01-07T16:11:56.979563" level="INFO">Current page does not contain input 'xpath://button[normalize-space()='Remove']'.</msg>
-<arg>${removeButton}</arg>
-<doc>Verifies button ``locator`` is not found from current page.</doc>
-<status status="PASS" start="2026-01-07T16:11:56.975903" elapsed="0.003720"/>
-</kw>
-<status status="PASS" start="2026-01-07T16:11:56.971976" elapsed="0.007715"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.083086" elapsed="0.000022"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:11:58.980337" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:11:56.979796" elapsed="2.000750"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.083169" elapsed="0.000015"/>
 </kw>
 <kw name="Back to shop page" owner="Cart">
-<kw name="Element Should Be Enabled" owner="SeleniumLibrary">
-<arg>${backShopPage}</arg>
-<doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" start="2026-01-07T16:11:58.981453" elapsed="0.010106"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.083265" elapsed="0.000017"/>
 </kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:58.991952" level="INFO">Clicking button 'css:button[class='btn btn-default']'.</msg>
-<arg>${backShopPage}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:58.991742" elapsed="0.068356"/>
-</kw>
-<status status="PASS" start="2026-01-07T16:11:58.980986" elapsed="0.079291"/>
-</kw>
-<status status="PASS" start="2026-01-07T16:11:54.859637" elapsed="4.200695"/>
+<status status="FAIL" start="2026-01-28T09:49:52.679795" elapsed="0.403542">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </kw>
 <kw name="Stop video" owner="Commons">
-<if>
-<branch type="IF" condition="'${video}' == '${TRUE}'">
-<kw name="Stop All Video Recordings" owner="ScreenCapLibrary">
-<arg>save_to_disk=True</arg>
-<doc>Stops all the video recordings and generates the files in WebM format. If ``embed`` argument
-was set to ``True`` the videos will be displayed in the log file.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:59.061235" elapsed="0.000026"/>
-</kw>
-<status status="NOT RUN" start="2026-01-07T16:11:59.060968" elapsed="0.000328"/>
-</branch>
-<status status="PASS" start="2026-01-07T16:11:59.060942" elapsed="0.000390"/>
-</if>
-<status status="PASS" start="2026-01-07T16:11:59.060676" elapsed="0.000696"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.083518" elapsed="0.000020"/>
 </kw>
 <doc>Remove a product from the cart</doc>
 <tag>removeProduct</tag>
-<status status="PASS" start="2026-01-07T16:11:54.858751" elapsed="4.202732"/>
+<status status="FAIL" start="2026-01-28T09:49:52.678830" elapsed="0.404833">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </test>
 <test id="s1-t4" name="Test Case 04 - Add a new product to the cart" line="43">
 <kw name="Start video" owner="Commons">
@@ -415,99 +306,46 @@ was set to ``True`` the videos will be displayed in the log file.</doc>
 <arg>embed=True</arg>
 <doc>Starts the recording of a video in the background with the specified ``name``.
 The recording can be stopped by calling the `Stop Video Recording` keyword.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:59.062359" elapsed="0.000022"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.084522" elapsed="0.000022"/>
 </kw>
-<status status="NOT RUN" start="2026-01-07T16:11:59.062212" elapsed="0.000217"/>
+<status status="NOT RUN" start="2026-01-28T09:49:53.084339" elapsed="0.000240"/>
 </branch>
-<status status="PASS" start="2026-01-07T16:11:59.062198" elapsed="0.000267"/>
+<status status="PASS" start="2026-01-28T09:49:53.084317" elapsed="0.000292"/>
 </if>
 <arg>name=Test Case 04 - Add a new product to the cart</arg>
-<status status="PASS" start="2026-01-07T16:11:59.062031" elapsed="0.000469"/>
+<status status="PASS" start="2026-01-28T09:49:53.084138" elapsed="0.000509"/>
 </kw>
 <kw name="Add a product" owner="AddProduct">
 <kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<msg time="2026-01-28T09:49:58.613315" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/screenshots/selenium-screenshot-11.png"&gt;&lt;img src="output/screenshots/selenium-screenshot-11.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-01-28T09:49:58.613633" level="FAIL">Element 'css:.card-title' not visible after 5 seconds.</msg>
 <arg>${listProducts}</arg>
 <doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-01-07T16:11:59.062850" elapsed="0.009209"/>
+<status status="FAIL" start="2026-01-28T09:49:53.084950" elapsed="5.529051">Element 'css:.card-title' not visible after 5 seconds.</status>
 </kw>
 <kw name="Search product" owner="AddProduct">
-<kw name="Get WebElements" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:59.074472" level="INFO">${elements} = [&lt;selenium.webdriver.remote.webelement.WebElement (session="4e826d7b-ae43-46c8-8393-f023898296b9", element="98eb05fd-06bc-416b-87f5-77a6634712c5")&gt;, &lt;selenium.webdriver.remote.webelement.WebElement (s...</msg>
-<var>${elements}</var>
-<arg>${listProducts}</arg>
-<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:59.072603" elapsed="0.001908"/>
-</kw>
-<kw name="Set Variable" owner="BuiltIn">
-<msg time="2026-01-07T16:11:59.074917" level="INFO">${index} = 1</msg>
-<var>${index}</var>
-<arg>1</arg>
-<doc>Returns the given values which can then be assigned to a variables.</doc>
-<status status="PASS" start="2026-01-07T16:11:59.074640" elapsed="0.000302"/>
-</kw>
-<for flavor="IN">
-<iter>
-<kw name="Exit For Loop If" owner="BuiltIn">
-<msg time="2026-01-07T16:11:59.081294" level="INFO">Exiting for loop altogether.</msg>
-<arg>'${chooseProduct}' == '${element.text}'</arg>
-<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
-<status status="PASS" start="2026-01-07T16:11:59.075234" elapsed="0.006148"/>
-</kw>
-<kw name="Evaluate" owner="BuiltIn">
-<var>${index}</var>
-<arg>${index} + 1</arg>
-<doc>Evaluates the given expression in Python and returns the result.</doc>
-<status status="NOT RUN" start="2026-01-07T16:11:59.081510" elapsed="0.000026"/>
-</kw>
-<var name="${element}">&lt;selenium.webdriver.remote.webelement.WebElement (session="4e826d7b-ae43-46c8-8393-f023898296b9", element="98eb05fd-06bc-416b-87f5-77a6634712c5")&gt;</var>
-<status status="PASS" start="2026-01-07T16:11:59.075151" elapsed="0.006416"/>
-</iter>
-<var>${element}</var>
-<value>@{elements}</value>
-<status status="PASS" start="2026-01-07T16:11:59.075007" elapsed="0.006606"/>
-</for>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:11:59.081930" level="INFO">Clicking button 'xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[1]'.</msg>
-<arg>xpath:(//button[@class='btn btn-info'][normalize-space()='Add'])[${index}]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:11:59.081710" elapsed="0.060546"/>
-</kw>
 <arg>${chooseProduct}</arg>
-<status status="PASS" start="2026-01-07T16:11:59.072326" elapsed="0.070124"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.614319" elapsed="0.000066"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:12:01.143326" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:11:59.142706" elapsed="2.000860"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.614542" elapsed="0.000032"/>
 </kw>
 <kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:01.144359" level="INFO">Clicking element 'xpath://a[@class='nav-link btn btn-primary']'.</msg>
 <arg>${checkoutProductButton}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:12:01.143940" elapsed="0.074003"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.614662" elapsed="0.000018"/>
 </kw>
 <arg>${addNewProduct}</arg>
-<status status="PASS" start="2026-01-07T16:11:59.062638" elapsed="2.155603"/>
+<status status="FAIL" start="2026-01-28T09:49:53.084766" elapsed="5.530007">Element 'css:.card-title' not visible after 5 seconds.</status>
 </kw>
 <kw name="Stop video" owner="Commons">
-<if>
-<branch type="IF" condition="'${video}' == '${TRUE}'">
-<kw name="Stop All Video Recordings" owner="ScreenCapLibrary">
-<arg>save_to_disk=True</arg>
-<doc>Stops all the video recordings and generates the files in WebM format. If ``embed`` argument
-was set to ``True`` the videos will be displayed in the log file.</doc>
-<status status="NOT RUN" start="2026-01-07T16:12:01.219281" elapsed="0.000024"/>
-</kw>
-<status status="NOT RUN" start="2026-01-07T16:12:01.219029" elapsed="0.000310"/>
-</branch>
-<status status="PASS" start="2026-01-07T16:12:01.219004" elapsed="0.000367"/>
-</if>
-<status status="PASS" start="2026-01-07T16:12:01.218731" elapsed="0.000678"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.614982" elapsed="0.000023"/>
 </kw>
 <doc>Add a new product to the cart</doc>
 <tag>addNewProduct</tag>
-<status status="PASS" start="2026-01-07T16:11:59.061671" elapsed="2.157857"/>
+<status status="FAIL" start="2026-01-28T09:49:53.083831" elapsed="5.531306">Element 'css:.card-title' not visible after 5 seconds.</status>
 </test>
 <test id="s1-t5" name="Test Case 05 - Purchase a product" line="50">
 <kw name="Start video" owner="Commons">
@@ -519,194 +357,114 @@ was set to ``True`` the videos will be displayed in the log file.</doc>
 <arg>embed=True</arg>
 <doc>Starts the recording of a video in the background with the specified ``name``.
 The recording can be stopped by calling the `Stop Video Recording` keyword.</doc>
-<status status="NOT RUN" start="2026-01-07T16:12:01.220353" elapsed="0.000021"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.616189" elapsed="0.000035"/>
 </kw>
-<status status="NOT RUN" start="2026-01-07T16:12:01.220212" elapsed="0.000198"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.615888" elapsed="0.000388"/>
 </branch>
-<status status="PASS" start="2026-01-07T16:12:01.220198" elapsed="0.000237"/>
+<status status="PASS" start="2026-01-28T09:49:58.615849" elapsed="0.000470"/>
 </if>
 <arg>name=Test Case 05 - Purchase a product</arg>
-<status status="PASS" start="2026-01-07T16:12:01.220040" elapsed="0.000428"/>
+<status status="PASS" start="2026-01-28T09:49:58.615653" elapsed="0.000722"/>
 </kw>
 <kw name="Checkout product" owner="Cart">
 <kw name="Checks the elements in the cart page before" owner="Cart">
 <kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:01.221163" level="INFO">Verifying element 'xpath:(//strong[normalize-space()='In Stock'])[1]' contains exact text 'in stock'.</msg>
+<msg time="2026-01-28T09:49:58.617341" level="INFO">Verifying element 'xpath:(//strong[normalize-space()='In Stock'])[1]' contains exact text 'in stock'.</msg>
+<msg time="2026-01-28T09:49:58.996291" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="output/screenshots/selenium-screenshot-12.png"&gt;&lt;img src="output/screenshots/selenium-screenshot-12.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg time="2026-01-28T09:49:58.996460" level="FAIL">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</msg>
 <arg>${productStatus}</arg>
 <arg>${productTextStatus}</arg>
 <arg>ignore_case=True</arg>
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:12:01.220927" elapsed="0.011091"/>
+<status status="FAIL" start="2026-01-28T09:49:58.617042" elapsed="0.379980">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </kw>
 <kw name="Page Should Contain Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:01.234828" level="INFO">Current page contains element 'css:td[class='text-right'] h3 strong'.</msg>
 <arg>${totalPrice}</arg>
 <doc>Verifies that element ``locator`` is found on the current page.</doc>
-<status status="PASS" start="2026-01-07T16:12:01.232355" elapsed="0.002606"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.997219" elapsed="0.000032"/>
 </kw>
 <kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:01.235582" level="INFO">Verifying element 'xpath://button[normalize-space()='Remove']' contains exact text 'remove'.</msg>
 <arg>${removeButton}</arg>
 <arg>${removeTextButton}</arg>
 <arg>ignore_case=True</arg>
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:12:01.235183" elapsed="0.008507"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.997328" elapsed="0.000018"/>
 </kw>
 <kw name="Element Text Should Be" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:01.244324" level="INFO">Verifying element 'css:button[class='btn btn-default']' contains exact text 'continue shopping'.</msg>
 <arg>${backShopPage}</arg>
 <arg>${backShopPageTextButton}</arg>
 <arg>ignore_case=True</arg>
 <doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:12:01.243934" elapsed="0.008558"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.997409" elapsed="0.000014"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:12:01.220783" elapsed="0.031857"/>
+<status status="FAIL" start="2026-01-28T09:49:58.616837" elapsed="0.380685">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </kw>
 <kw name="Element Should Be Enabled" owner="SeleniumLibrary">
 <arg>${checkoutButton}</arg>
 <doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" start="2026-01-07T16:12:01.252782" elapsed="0.008260"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.997601" elapsed="0.000017"/>
 </kw>
 <kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:12:03.261931" level="INFO">Slept 2 seconds.</msg>
 <arg>2</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:12:01.261272" elapsed="2.000908"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.997683" elapsed="0.000015"/>
 </kw>
 <kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:03.262963" level="INFO">Clicking button 'xpath://button[normalize-space()='Checkout']'.</msg>
 <arg>${checkoutButton}</arg>
 <doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:12:03.262527" elapsed="0.112264"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.997759" elapsed="0.000015"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:12:01.220594" elapsed="2.154504"/>
+<status status="FAIL" start="2026-01-28T09:49:58.616570" elapsed="0.381259">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </kw>
 <kw name="Open file" owner="Commons">
-<kw name="Open Excel Document" owner="ExcelLibrary">
-<arg>filename=${fileName}</arg>
-<arg>doc_id=${sheetName}</arg>
-<doc>Opens xlsx document file.</doc>
-<status status="PASS" start="2026-01-07T16:12:03.375893" elapsed="0.004177"/>
-</kw>
 <arg>${fileCountryPath}</arg>
 <arg>${country}</arg>
-<status status="PASS" start="2026-01-07T16:12:03.375469" elapsed="0.004688"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.998004" elapsed="0.000024"/>
 </kw>
 <kw name="Read Excel Cell" owner="ExcelLibrary">
-<msg time="2026-01-07T16:12:03.380538" level="INFO">${countryName} = india</msg>
 <var>${countryName}</var>
 <arg>row_num=2</arg>
 <arg>col_num=1</arg>
 <doc>Returns content of a cell.</doc>
-<status status="PASS" start="2026-01-07T16:12:03.380318" elapsed="0.000244"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.998124" elapsed="0.000016"/>
 </kw>
 <kw name="Purchase a product" owner="Cart">
-<kw name="Input Text" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:03.381139" level="INFO">Typing text 'india' into text field 'id:country'.</msg>
-<arg>${inputCountry}</arg>
 <arg>${countryName}</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:12:03.380968" elapsed="0.028744"/>
-</kw>
-<kw name="Sleep" owner="BuiltIn">
-<msg time="2026-01-07T16:12:09.410496" level="INFO">Slept 6 seconds.</msg>
-<arg>6</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<status status="PASS" start="2026-01-07T16:12:03.410041" elapsed="6.000656"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:09.411344" level="INFO">Clicking element 'css:div[class='suggestions'] ul li a'.</msg>
-<arg>${suggestCountry}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.410992" elapsed="0.066904"/>
-</kw>
-<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
-<arg>${acceptPurchaseTerms}</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.478194" elapsed="0.009943"/>
-</kw>
-<kw name="Click Element" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:09.488584" level="INFO">Clicking element 'css:label[for='checkbox2']'.</msg>
-<arg>${acceptPurchaseTerms}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.488342" elapsed="0.059416"/>
-</kw>
-<kw name="Element Should Be Enabled" owner="SeleniumLibrary">
-<arg>${purchaseButton}</arg>
-<doc>Verifies that element identified by ``locator`` is enabled.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.548123" elapsed="0.008164"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:09.556890" level="INFO">Clicking button 'css:input[value='Purchase']'.</msg>
-<arg>${purchaseButton}</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.556565" elapsed="0.059490"/>
-</kw>
-<kw name="Wait Until Page Contains Element" owner="SeleniumLibrary">
-<arg>${successPurchaseMessage}</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.616365" elapsed="0.002424"/>
-</kw>
-<kw name="Element Should Contain" owner="SeleniumLibrary">
-<msg time="2026-01-07T16:12:09.627102" level="INFO">Element 'css:.alert.alert-success.alert-dismissible' contains text 'success'.</msg>
-<arg>${successPurchaseMessage}</arg>
-<arg>${successTextMessage}</arg>
-<arg>ignore_case=True</arg>
-<doc>Verifies that element ``locator`` contains text ``expected``.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.618960" elapsed="0.008305"/>
-</kw>
-<arg>${countryName}</arg>
-<status status="PASS" start="2026-01-07T16:12:03.380742" elapsed="6.246620"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.998275" elapsed="0.000019"/>
 </kw>
 <kw name="Close file" owner="Commons">
-<kw name="Close Current Excel Document" owner="ExcelLibrary">
-<doc>Closes current document.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.627824" elapsed="0.000080"/>
-</kw>
-<status status="PASS" start="2026-01-07T16:12:09.627574" elapsed="0.000376"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.998384" elapsed="0.000017"/>
 </kw>
 <kw name="Stop video" owner="Commons">
-<if>
-<branch type="IF" condition="'${video}' == '${TRUE}'">
-<kw name="Stop All Video Recordings" owner="ScreenCapLibrary">
-<arg>save_to_disk=True</arg>
-<doc>Stops all the video recordings and generates the files in WebM format. If ``embed`` argument
-was set to ``True`` the videos will be displayed in the log file.</doc>
-<status status="NOT RUN" start="2026-01-07T16:12:09.628437" elapsed="0.000020"/>
-</kw>
-<status status="NOT RUN" start="2026-01-07T16:12:09.628241" elapsed="0.000247"/>
-</branch>
-<status status="PASS" start="2026-01-07T16:12:09.628221" elapsed="0.000297"/>
-</if>
-<status status="PASS" start="2026-01-07T16:12:09.628102" elapsed="0.000450"/>
+<status status="NOT RUN" start="2026-01-28T09:49:58.998527" elapsed="0.000016"/>
 </kw>
 <doc>Purchase a product</doc>
 <tag>purchase</tag>
-<status status="PASS" start="2026-01-07T16:12:01.219718" elapsed="8.408927"/>
+<status status="FAIL" start="2026-01-28T09:49:58.615325" elapsed="0.383333">Element with locator 'xpath:(//strong[normalize-space()='In Stock'])[1]' not found.</status>
 </test>
 <kw name="Close the browser" owner="Commons" type="TEARDOWN">
 <kw name="Close Browser" owner="SeleniumLibrary">
 <doc>Closes the current browser.</doc>
-<status status="PASS" start="2026-01-07T16:12:09.629334" elapsed="0.714724"/>
+<status status="PASS" start="2026-01-28T09:49:58.999327" elapsed="0.083692"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:12:09.629156" elapsed="0.715129"/>
+<status status="PASS" start="2026-01-28T09:49:58.999160" elapsed="0.084031"/>
 </kw>
-<status status="PASS" start="2026-01-07T16:11:43.903814" elapsed="26.440530"/>
+<status status="FAIL" start="2026-01-28T09:49:13.808990" elapsed="45.274259"/>
 </suite>
 <statistics>
 <total>
-<stat pass="5" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="4" skip="0">All Tests</stat>
 </total>
 <tag>
-<stat pass="1" fail="0" skip="0">addNewProduct</stat>
-<stat pass="1" fail="0" skip="0">addProduct</stat>
-<stat pass="1" fail="0" skip="0">correct</stat>
+<stat pass="0" fail="1" skip="0">addNewProduct</stat>
+<stat pass="0" fail="1" skip="0">addProduct</stat>
+<stat pass="0" fail="1" skip="0">correct</stat>
 <stat pass="1" fail="0" skip="0">login</stat>
-<stat pass="1" fail="0" skip="0">purchase</stat>
-<stat pass="1" fail="0" skip="0">removeProduct</stat>
+<stat pass="0" fail="1" skip="0">purchase</stat>
+<stat pass="0" fail="1" skip="0">removeProduct</stat>
 </tag>
 <suite>
-<stat name="TestSuite" id="s1" pass="5" fail="0" skip="0">TestSuite</stat>
+<stat name="TestSuite" id="s1" pass="1" fail="4" skip="0">TestSuite</stat>
 </suite>
 </statistics>
 <errors>
