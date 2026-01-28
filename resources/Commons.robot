@@ -34,5 +34,5 @@ Close the browser
 ${imagePath}    ../../PycharmProjects/shopProject/output/screenshots
 ${videoPath}    ../../PycharmProjects/shopProject/output/videos
 ${url}   https://rahulshettyacademy.com/loginpagePractise/
-${video}    ${FALSE}
+${video}    ${TRUE}
 ${browser}    chrome
