@@ -30,7 +30,8 @@ Test Case 02 - Add a product
     [Documentation]    Add a new product to the cart
     [Tags]    addProduct     correct
     Start video    name=Test Case 02 - Add a product
-    Add a product  ${addProduct}
+    #Add a product  ${addProduct}
+    Add A Product    ${addProduct}
     Stop video
 
 Test Case 03 - Remove a product from the cart
@@ -44,7 +45,8 @@ Test Case 04 - Add a new product to the cart
     [Documentation]    Add a new product to the cart
     [Tags]    addNewProduct
     Start video    name=Test Case 04 - Add a new product to the cart
-    Add a product  ${addNewProduct}
+    #Add a product  ${addNewProduct}
+    Add A Product     ${addNewProduct}
     Stop video
 
 Test Case 05 - Purchase a product

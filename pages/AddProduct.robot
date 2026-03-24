@@ -1,6 +1,7 @@
 *** Settings ***
 Variables    ../resources/Locators.py
 Resource    ../resources/Commons.robot
+Library    ../customLibraries/Shop.py
 
 *** Keywords ***
 Search product
@@ -16,7 +17,8 @@ Search product
 Add a product
     [Arguments]    ${chooseProduct}
     Wait Until Element Is Visible    ${listProducts}
-    Search Product    ${chooseProduct}
+    #Search Product    ${chooseProduct}
+    Add Items To Cart    ${chooseProduct}
     Sleep    2
     Click Element    ${checkoutProductButton}
 
